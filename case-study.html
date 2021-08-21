@@ -74,32 +74,131 @@
         <h2 class="h2">1 Introduction</h2>
         <br>
         <p>
+        As the quantity and diversity of data continues to grow, user data is becoming spread across a variety of third-party services catering to the needs of specific departments within a company (e.g., marketing, customer service, finance, etc.). Unfortunately, this places data in silos, fragmenting what should be a more unified user view. 
         </p>
-
+        <br>
+        <p>
+        With the advent of the cloud-native data warehouse has come the ability to collect data from disparate sources into one central repository and treat the warehouse as the “single source of truth”.
+        </p>
+        <br>
+        <p>
+Data modeling and business intelligence or analytics tools built on top of the warehouse can now offer a consistent view of users. However, mapping this data back into the same third-party tools to impact day-to-day operations is still a huge challenge. In other words, there is a lag between insights and operations.
+        </p>
+        <br />
         <h3>1.1 What is Tapestry?</h3>
         <p>
+          Tapestry is an open source orchestration framework for the deployment of user entity data pipelines. 
         </p>
         <br />
         <p>
-        </p>
-        <br />
-
-        <h3>1.2 Introducing Rainshield</h3>
-        <p>
-         
+          Tapestry allows developers to easily configure and launch an end-to-end data pipeline hosted on Amazon Web Services. With Tapestry, your user data pipeline will be automatically deployed and ready to ingest data from all your user data sources, store and transform that data in a data warehouse, and sync that data back to your data tools for immediate use.
         </p>
         <br />
         <p>
+          To illustrate just exactly what Tapestry does, let’s use the example of a company named Rainshield.
         </p>
+        <br />
+        <h3>1.2 Use Case</h3>
         <figure>
-          <img src="" class="case-study-image" />
-          <figcaption>Fig. 1: NapTime's beta architecture</figcaption>
+          <img src="assets/images/introduction/4_Rainshield_business.png" class="case-study-image">
+          <figcaption>Fig 1. Rainshield's Growth</figcaption>
         </figure>
         <br />
         <p>
+          Rainshield is a company in the umbrella space, with a thriving e-commerce store that is quickly gaining traction amongst a larger user base. This has attracted the interest of investors, and they’ve raised funding that has allowed them to expand.   
         </p>
         <br />
         <p>
+          The small team that started Rainshield is no longer able to wear all hats, and they are beginning to staff larger departments, such as sales, marketing and customer support, to manage the influx of new business they’re experiencing.
+        </p>
+        <br />
+        <h3>1.3 Rainshield & SaaS Bloat</h3>
+        <figure>
+          <img src="assets/images/introduction/5_Rainshield_SaaS.png" class="case-study-image">
+          <figcaption>Fig 2. Rainshield & SaaS Bloat</figcaption>
+        </figure>
+        <br /> 
+        <p>
+          As the business evolves, Rainshield begins to utilize various SaaS tools in order to engage with their user base in new ways and to meet the daily operational needs of different departments. 
+        </p>
+        <br />
+        <p>
+          For example, they begin to use Stripe to handle all of their online transactions. The company’s Sales Team has started using Salesforce to organize and track their leads, and the Rainshield customer support team is now incorporating Zendesk to help with managing all of the support tickets that are being generated.The Marketing team is even planning on hosting a Zoom webinar on a design-your-own umbrella product they are about to unveil soon!
+        </p>
+        <br />
+        <p>
+          Prior to this growth, user data was largely managed in the production database, however, these teams are not only requiring different views of this data to accomplish their goals, but are also creating new sources of user data as they interact with customers through a variety of platforms and tools. 
+        </p>
+        <br />
+        <h3>1.4 Data Silos</h3>
+        <p>While these third-party SaaS tools cater to the needs of each department well, user data is beginning to proliferate the organization, in terms of both the data produced and collected. Data is becoming scattered across the different tools each team is using.
+        </p>
+        <figure>
+          <img src="assets/images/introduction/6_data_silos_gif_alt.gif" class="case-study-image" alt="">
+          <figcaption>Fig 3. Data Silos</figcaption>
+        </figure>
+        <br/>
+        <p>
+          These tools were not designed with integration in mind, and it is becoming more challenging to have a unified understanding of a single user and how they are interacting with Rainshield and its product. Each tool has access to only a portion of the customer’s information, but not the whole picture. 
+        </p>
+        <br/>
+        <p>
+          These SaaS tools, that have increased productivity, have now become known as data silos. <strong>Data goes in, but doesn’t come out</strong>.
+        </p>
+        <br/>
+        <p>
+          The industry agrees that this is a challenge:
+        </p>
+        <figure>
+          <img src="assets/images/introduction/7_colinzima.png" class="case-study-image" alt="">
+        </figure>
+        <h3>1.5 User Data</h3>
+        <p>
+          To better understand the ramifications of data silos, let's turn back to our company Rainshield.
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/introduction/8_Susy.png" class="case-study-image" alt="">
+          <figcaption>Fig 4. Susy</figcaption>
+        </figure>
+        <p>
+          Meet Susy, a Rainshield customer. According to her profile in Salesforce, Susy has purchased 6 umbrellas for her friends and family.  However, Zendesk indicated that she called 2 times complaining about the color of some of her umbrellas. Susy is excited about picking her own umbrella color and is signed up to attend the Zoom webinar unveiling the new design-your-own product. When this data about Susy lives in different tools, it is difficult to access a composite picture of Susy. 
+        </p>
+        
+        <br/> 
+        <h3>1.5 Analyzing and Leveraging User Data</h3>
+        <p>
+          It's easy to imagine that Rainshield could use many more tools that capture different pieces of user data,and that they might have thousands of different customers buying their umbrellas, some of whom fit Susy’s exact profile. When data can be collected in one place, Rainshield can begin to see patterns among their users.
+        </p>
+        <figure>
+          <img src="assets/images/introduction/9_rainshield_users.png" class="case-study-image" alt="">
+          <figcaption>Fig 5. User composite</figcaption>
+        </figure>
+        <p> 
+          But even with this user data gathered for analysis in one place, how can these insights be used to impact day-to-day operations? 
+        </p>
+        <figure>
+          <img src="assets/images/introduction/10_insights_action.png" class="case-study-image" alt="">
+        </figure>
+        <p>
+          Let’s say Rainshield would like to use what they know about Susy and other customers that match her profile in an attempt to increase sales. They believe that this group of users will be especially interested in the new umbrella colors that Rainshield just rolled out, and they would like to prompt these customers with a custom chat message via Intercom the next time they log on. But before this desired action can take place, Rainshield still needs to provide Intercom with this specific list of customers. In other words, making insights actionable still requires work. Rainshield needs to map relevant user data to Intercom in the particular format that Intercom requires. This process can be thought of as data syncing. 
+        </p>
+        <br />
+        <figure>
+          <img src="assets/images/introduction/11_users_to_intercom.png" class="case-study-image" alt="">
+          <figcaption>Fig 5. Data Syncing</figcaption>
+        </figure>
+        <p>
+          So let’s take a step back and recap the obstacles that Rainshield and companies like it are facing. Important user data is being trapped in silos as the quantity of Rainshield’s SaaS tools increases. Companies would like to aggregate data from these disparate third-party sources into one location for better analysis. Additionally, they would like to sync relevant data to other third-party destinations to drive operations based on their findings.
+        </p>
+        <br/>
+        <p>But what are the challenges of this type of data integration?</p>
+        
+        
+
+
+
+
           
 
         <!-- Section 9 -->
