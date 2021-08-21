@@ -112,7 +112,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           The small team that started Rainshield is no longer able to wear all hats, and they are beginning to staff larger departments, such as sales, marketing and customer support, to manage the influx of new business they’re experiencing.
         </p>
         <br />
-        <h3>1.3 Rainshield & SaaS Bloat</h3>
+        <h3>1.3 SaaS Bloat</h3>
         <figure>
           <img src="assets/images/introduction/5_Rainshield_SaaS.png" class="case-study-image">
           <figcaption>Fig 2. Rainshield & SaaS Bloat</figcaption>
@@ -164,9 +164,8 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           Meet Susy, a Rainshield customer. According to her profile in Salesforce, Susy has purchased 6 umbrellas for her friends and family.  However, Zendesk indicated that she called 2 times complaining about the color of some of her umbrellas. Susy is excited about picking her own umbrella color and is signed up to attend the Zoom webinar unveiling the new design-your-own product. When this data about Susy lives in different tools, it is difficult to access a composite picture of Susy. 
         </p>
-        
         <br/> 
-        <h3>1.5 Analyzing and Leveraging User Data</h3>
+        <h3>1.6 Analyzing and Leveraging User Data</h3>
         <p>
           It's easy to imagine that Rainshield could use many more tools that capture different pieces of user data,and that they might have thousands of different customers buying their umbrellas, some of whom fit Susy’s exact profile. When data can be collected in one place, Rainshield can begin to see patterns among their users.
         </p>
@@ -193,14 +192,45 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <p>But what are the challenges of this type of data integration?</p>
-        
-        
-
-
-
-
-          
-
+        <br /> 
+        <h3>1.7 Challenges of User Data Integration</h3>
+        <br /> 
+        <p>
+          User data stored in SaaS applications is similar in structure to the data we see in traditional relational databases. However, unlike relational databases, data in SaaS applications cannot be accessed with a simple query.  Instead, this data must be retrieved via unique REST APIs, making it difficult to determine how to communicate with each tool. 
+        </p>
+        <br /> 
+        <p>
+          Furthermore, factors such as limited documentation, rate limits on API requests, managing potential network errors, and ever-changing API schemas can make transporting large amounts of data a challenging and slow process.
+        </p>
+        <br/>
+        <!-- Section 2 -->
+        <h2>2 Existing Solutions</h2>
+        <br/>
+        <p>
+          There are four main options for integrating data between third-party tools:
+        </p>
+        <br/>
+        <p>(1) Manually move files between tools</p>
+        <p>(2) Use pre-built connectors</p>
+        <p>(3) Create custom connectors</p>
+        <p>(4) Build a complete data pipeline</p>
+        <br/>
+        <h3>2.1 Manually Move Files</h3>
+        <figure>
+          <img src="assets/images/solutions/16_csvfile_gif_sm.gif" class="case-study-image" alt="">
+          <figcaption>Fig 6. Manual Sync</figcaption>
+        </figure>
+        <br/>
+        <p>Let’s talk about the first option at Rainshield’s disposal, manually moving files between tools.
+        </p>
+        <br/>
+        <p>
+          Let’s say that Rainshield wanted to make sure that SalesForce had all of the contacts from the Zoom webinar revealing the new design-your-own umbrella. 
+        </p>
+        <br/>
+        <p>
+          They could simply export the list of webinar attendees from Zoom to a csv file, and then import that file into SalesForce, but this might result in duplicate data and could become tedious if you had to do this task often. 
+        </p>
         <!-- Section 9 -->
         <h2>9 Team</h2>
         <br>
