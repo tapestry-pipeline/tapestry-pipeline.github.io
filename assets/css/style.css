@@ -1961,76 +1961,41 @@ a:hover {
   font-weight: bold;
 }
 
-/* added */
-/* 
-iframe {
-  height: 100%;
-  width: 100%;
-} */
+/* ADDITIONS */
+.bold {
+  font-weight: bold;
+}
 
-/* .main-section:before {
-  display: block;
-  content: " ";
-  margin-top: -4rem;
-  height: 4rem;
-  visibility: hidden;
-  pointer-events: none;
-  background-color: yellow;
-} */
-
-/* Youtube */
-/* #presentation div {
-  padding: 4rem 0;
-  text-align: center;
-  /* padding-top: 90px;
-  padding-bottom: 90px; */
-} */
-
-/* #presentation iframe {
-  border: 1px solid var(--gray-200);
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  height: calc(100vh - 4rem);
-  margin: 0 auto;
-  /* max-height: 304px;
-  max-width: 540px; */
-  width: 100%;
-  height: 100%;
-} */
-
-/* #presentation h2 {
-  color: var(--jolt-blue);
-  font-weight: 800;
-  font-size: 2.25rem;
-  margin-bottom: 1em;
-} */
-
-
-
-/* .bg-gray {
+.bg-gray {
   background-color: #eee;
 }
 
-.presentation {
-  padding: 0;
-}
-.presentation.figure {
-  height: 100%;
-  width: 100%;
-} */
-
-.presentation-wrapper {
+.video {
+  height: 0;
+  padding-bottom: 42.6%;
   position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
 }
 
-.presentation-video {
+.video__frame {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
+  width: auto;
+  height: auto;
+}
+
+iframe {
   width: 100%;
   height: 100%;
-  border: 0;
+
+  box-shadow: 0 0 40px #000;
+}
+
+.video-container {
+  position: relative;
+  width: 90%;
+  margin: 10vh auto;
+  margin-bottom: 20%;
 }
