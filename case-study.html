@@ -101,7 +101,6 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <h3>1.2 Use Case</h3>
         <figure>
           <img src="assets/images/introduction/4_Rainshield_business.png" class="case-study-image">
-          <figcaption>Fig 1. Rainshield's Growth</figcaption>
         </figure>
         <br />
         <p>
@@ -115,7 +114,6 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <h3>1.3 SaaS Bloat</h3>
         <figure>
           <img src="assets/images/introduction/5_Rainshield_SaaS.png" class="case-study-image">
-          <figcaption>Fig 2. Rainshield & SaaS Bloat</figcaption>
         </figure>
         <br /> 
         <p>
@@ -135,7 +133,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <figure>
           <img src="assets/images/introduction/6_data_silos_gif_alt.gif" class="case-study-image" alt="">
-          <figcaption>Fig 3. Data Silos</figcaption>
+          <figcaption>Data captured by different tools lives in data silos.</figcaption>
         </figure>
         <br/>
         <p>
@@ -159,7 +157,6 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <br/>
         <figure>
           <img src="assets/images/introduction/8_Susy.png" class="case-study-image" alt="">
-          <figcaption>Fig 4. Susy</figcaption>
         </figure>
         <p>
           Meet Susy, a Rainshield customer. According to her profile in Salesforce, Susy has purchased 6 umbrellas for her friends and family.  However, Zendesk indicated that she called 2 times complaining about the color of some of her umbrellas. Susy is excited about picking her own umbrella color and is signed up to attend the Zoom webinar unveiling the new design-your-own product. When this data about Susy lives in different tools, it is difficult to access a composite picture of Susy. 
@@ -171,8 +168,9 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <figure>
           <img src="assets/images/introduction/9_rainshield_users.png" class="case-study-image" alt="">
-          <figcaption>Fig 5. User composite</figcaption>
+          <figcaption>User Insights</figcaption>
         </figure>
+        <br/>
         <p> 
           But even with this user data gathered for analysis in one place, how can these insights be used to impact day-to-day operations? 
         </p>
@@ -185,8 +183,9 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <br />
         <figure>
           <img src="assets/images/introduction/11_users_to_intercom.png" class="case-study-image" alt="">
-          <figcaption>Fig 5. Data Syncing</figcaption>
+          <figcaption>Data Syncing</figcaption>
         </figure>
+        <br/>
         <p>
           So let’s take a step back and recap the obstacles that Rainshield and companies like it are facing. Important user data is being trapped in silos as the quantity of Rainshield’s SaaS tools increases. Companies would like to aggregate data from these disparate third-party sources into one location for better analysis. Additionally, they would like to sync relevant data to other third-party destinations to drive operations based on their findings.
         </p>
@@ -210,19 +209,19 @@ Data modeling and business intelligence or analytics tools built on top of the w
           There are four main options for integrating data between third-party tools:
         </p>
         <br/>
-        <p>(1) Manually move files between tools</p>
-        <p>(2) Use pre-built connectors</p>
-        <p>(3) Create custom connectors</p>
-        <p>(4) Build a complete data pipeline</p>
+        <p>1. Manually move files between tools</p>
+        <p>2. Use pre-built connectors</p>
+        <p>3. Create custom connectors</p>
+        <p>4. Build a complete data pipeline</p>
         <br/>
         <h3>2.1 Manually Move Files</h3>
-        <figure>
-          <img src="assets/images/solutions/16_csvfile_gif_sm.gif" class="case-study-image" alt="">
-          <figcaption>Fig 6. Manual Sync</figcaption>
-        </figure>
         <br/>
         <p>Let’s talk about the first option at Rainshield’s disposal, manually moving files between tools.
         </p>
+        <figure>
+          <img src="assets/images/solutions/16_csvfile_gif_sm.gif" class="case-study-image" alt="">
+          <figcaption>Manual Sync</figcaption>
+        </figure>
         <br/>
         <p>
           Let’s say that Rainshield wanted to make sure that SalesForce had all of the contacts from the Zoom webinar revealing the new design-your-own umbrella. 
@@ -231,8 +230,140 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           They could simply export the list of webinar attendees from Zoom to a csv file, and then import that file into SalesForce, but this might result in duplicate data and could become tedious if you had to do this task often. 
         </p>
-        <!-- Section 9 -->
-        <h2>9 Team</h2>
+        <br/>
+        <h3>2.2 Use Pre-built Connectors</h3>
+        <br/>
+        <p>
+          Another possibility would be to use a company that creates these connectors for you, like Zapier. Rainshield can give them some information about their Zoom and SalesForce accounts, and they set up the flow of data between them for you using pre-built connectors. 
+        </p>
+        <figure>
+          <img src="assets/images/solutions/17_zapier.png" class="case-study-image">
+          <figcaption>Zapier's Connectors</figcaption>
+        </figure>
+        <br/>
+        <p>
+          This however, would not allow much flexibility regarding which parts of the data would be shared between the two apps, you may still wind up with duplicate data, or you may not find all of the apps you need to integrate together on their menu.
+        </p>
+        <br/>
+        <p>
+          Another type of prebuilt connection sometimes exists in certain tool’s settings. For example, Zoom has a way to integrate directly with SalesForce by simply configuring your settings to export your data. This isn’t always the case though, and more than likely, Rainshield will not find every tool it uses in every other tools configuration settings to sync up.
+        </p>
+        <br/>
+        <h3>2.3 Create Custom Connectors</h3>
+        <br/>
+        <p>
+          The third course of action is that Rainshield could designate one or two software engineers to begin building custom connections to pipe data directly into all of the tools they use. The benefit of this option is you can flexibly choose what data to send. However, not only would these engineers have to research these tools’ APIs to extract data, but also to sync data as well. 
+        </p>
+        <br/>
+        <p>
+          This might not be too bad if the number of tools the company used was very small. For example, if Rainshield only needed to connect Zoom and Salesforce with Mailchimp, then they may only have to write 6 connectors to ensure they all shared the same data. 
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/solutions/18_custom_connectors_crop.gif">
+          <figcaption>Custom Point-to-Point Integrations</figcaption>
+        </figure>
+        <br/> 
+        <p>
+          However, if your company already uses several tools, or plans on growing in the future, this can quickly get out of hand. And this is to say nothing of the fact that these connectors would also have to be maintained. 
+        </p>
+        <br/> 
+        <p>
+          If one API changed, every tool that connected to it would also need to be changed. And the reality is that even small companies use anywhere between 10 to 50 tools. That would require a lot of valuable engineering time.
+        </p>
+        <br/>
+        <h3>2.4 Build a Complete Data Pipeline</h3>
+        <br/>
+        <p>
+          Perhaps the best and most complete solution is our last option, implementing an end-to-end user data pipeline, with a  cloud data warehouse at the center. 
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/solutions/3_pipelineoverviewcolor.png" class="case-study-image">
+          <figcaption>User Data Pipeline</figcaption>
+        </figure>
+        <br/> 
+        <p>
+          From an engineering perspective, this approach allows access to data ingestion and syncing tools that remove the headache of working with third-party APIs, while also providing you with the flexibility that custom connectors offer, i.e. you choose exactly what data to send. 
+        </p>
+        <br/>
+        <h4>Benefits of Warehouse-Centric Pipelines</h4>
+        <figure>
+          <img src="assets/images/solutions/19_warehousecenter_gif.gif"">
+          <figcaption>Warehouse-Centric Data Integration</figcaption>
+        </figure>
+        <br/>
+        <p>
+          Placing a cloud warehouse at the center of your pipeline also provides several other benefits.
+        </p>
+        <br/>
+        <p>
+          Cloud data warehouses allow for the storage of large amounts of data with very little infrastructure management and instant scalability. Warehouses may also serve as a “single source of truth” if two departments ever had conflicting data. Additionally, data modeling and analytics tools can be built on top of the warehouse and can aid in making important business intelligence decisions. Lastly, the warehouse offers the ability to combine and filter data from multiple sources in order to sync with another destination.
+        </p>
+        <br/>
+        <p>
+          This warehouse-centric pipeline helps aggregate all of your data into one accessible place so you can create unified models and sync them to the tools your teams need. 
+        </p>
+        <br/>
+        <p>The industry agrees this is what the modern data stack should be.</p>
+        <figure>
+          <img src="assets/images/solutions/20_rudderstackquote.png" class="case-study-image" alt="">
+        </figure>
+        <br/>
+        <h3>2.5 Data Pipeline Solutions</h3>
+        <br/>
+        <p>
+          When deploying this type of user data pipeline, the two primary options are to use a proprietary hosted solution, such as the one offered by the company Rudderstack, or to use open source tools to configure your own pipeline. 
+        </p>
+        <figure>
+          <img src="assets/images/solutions/21_rudderstack_v_selfhosted.png" class="case-study-image" alt="">
+        </figure>
+        <p>
+          The self-hosted option allows for the inclusion of fully open-source tools and grants you full ownership over your pipeline infrastructure. This means you can customize it any way you like. But this solution doesn’t have any out-of-the-box features and would require a substantial amount of engineering time.
+        </p>
+        <br/> 
+        <p>
+          Rudderstack, on the other hand, only offers open-source event streaming, and also requires you to to use their infrastructure, leaving you with little control. However, they provide a ton of features and also abstract away ALL of the infrastructure provisioning and management, making it extremely easy to deploy a user data pipeline quickly.  
+        </p>
+        <br/>
+        <h4>Challenges of Pipeline Deployment</h4>
+        <br/>
+        <p>
+          Building your own pipeline requires an extraordinary amount of time and effort to set up, provision, and configure. 
+        </p>
+        <br/>
+        <p>
+          You need to make many different decisions about which tools to use for data ingestion and syncing and which warehouse to select,  and that’s not even mentioning all that goes into provisioning and maintaining pipeline infrastructure. To say the least, this is an extremely complex process.
+        </p>
+        <br/>
+        <h3>2.6 Who Should Use Tapestry</h3>
+        <br/>
+        <figure>
+          <img src="assets/images/solutions/23_tapestry_comparision.png" alt="">
+        </figure>
+        <br/>
+        <p>
+          Tapestry weaves together all of the necessary resources to create an end-to-end user data pipeline, automate the setup and configuration, and let you spend your valuable time doing something more important.
+        </p>
+        <br/>
+        <p>
+          Tapestry is for developers who want full control over their data infrastructure, BUT without having to provision that infrastructure themselves. Tapestry is a completely open-source framework that automates the entire pipeline deployment process. We do not, however, have very many out of the box features.
+        </p>
+        <br/>
+        <p>
+          So if you were thinking about rolling your own self-hosted solution, but wanted to simplify the deployment process, we might be able to help.
+        </p>
+        <br/>
+        <h4>What Tapestry Automates</h4>
+        <figure>
+          <img src="assets/images/solutions/24_automation_chart.png" class="case-study-image" alt="">
+        </figure>
+        <p>
+          Tapestry automates many steps and creates a number of resources for each phase of the pipeline. As you can see, deploying your own user data pipeline would require at least 71 steps and the provisioning of 49 Resources between AWS and the data warehouse. 
+        </p>
+
+        <!-- Section 7 -->
+        <h2>7 Team</h2>
         <br>
         <br>
         
