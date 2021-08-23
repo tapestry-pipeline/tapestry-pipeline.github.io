@@ -634,7 +634,8 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           Once Grouparoo is deployed, you are ready to start pulling data from your warehouse, and syncing it into other third party tools, like Mailchimp.
         </p>
-        <!--Section 4-->
+        <br/>
+        <!--Section 5-->
         <h2>5 Using Tapestry</h2>
         <br/>
         <h3>5.1 Prerequisites</h3>
@@ -656,6 +657,163 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           After these preliminary steps, all you would need to do is run <code class="command">npm i -g tapestry-pipeline</code> with a global flag, and a host of commands will be provided to you.
         </p>
+        <br/>
+        <h3>5.3 Tapestry Commands</h3>
+        <figure>
+          <img src="assets/images/demo/26_commandlist_v2.png">
+          <figcaption>Tapestry's list of commands.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          As a new user, the first Tapestry command you would run is <code class="command">tapestry init</code>.
+        </p>
+        <figure>
+          <img src="assets/images/demo/27_tapestry_init_computer.png" class="case-study-image-small">
+        </figure>
+        <br/>
+        <p>
+          With <code class="command">tapestry init</code>, you give your project a name and Tapestry will provision a project folder along with an AWS Cloudformation template, which allows you to provision and configure AWS resources with code. This template in particular is used to provision resources for the data ingestion phase of the pipeline. What Tapestry provides for the syncing phase of your pipeline is dependent upon which command you run next.
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/demo/27_init_v2.gif">
+          <figcaption>Init from the command line.</figcaption>
+        </figure>
+        <h3>5.4 Deploy vs. Kickstart Commands</h3>
+        <br/>
+        <p>
+          Next, you have a choice between the <code class="command">tapestry deploy</code> or <code class="command">tapestry kickstart</code> commands. Once you make your selection, Tapestry provides all the necessary configuration files for the data syncing phase. 
+        </p>
+        <figure>
+          <img src="assets/images/demo/28_deploy_v_kickstart.png" class="case-study-image">
+          <figcaption>Differences between deploy and kickstart commands.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          Both commands automate the deployment of a fully operational pipeline, but <code class="command">kickstart</code> includes two pre-configured sources,  Zoom and Salesforce, along with one destination, Mailchimp. These pre-configured third-party tools set up your pipeline to have immediate end-to-end data flow, beginning with data ingestion and ending with data syncing into these tools.
+        </p>
+        <br/>
+        <h3>5.5 End-to-End Demo</h3>
+        <br/>
+        <p>
+          To better show the full flow of data through a Tapestry pipeline, this section will walk through our <code class="command">tapestry kickstart</code> command. 
+        </p>
+        <figure>
+          <img src="assets/images/demo/29_tapestry_kickstart_computer.png" class="case-study-image-small">
+        </figure>
+        <br/>
+        <p>
+          Prior to execution, you will have to own or create accounts with Zoom, Salesforce, and Mailchimp. <code class="command">kickstart</code> then begins by prompting you with a short series of questions about the previously mentioned accounts, as well as Snowflake, Tapestry’s data warehouse of choice.
+        </p>
+        <figure>
+          <img src="assets/images/demo/29_kickstart_questions_stars.gif">
+          <figcaption>Kickstart command prompts user for inputs.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          After your information has been collected, <code class="command">kickstart</code> continues by creating the necessary databases and tables within your data warehouse to be utilized by both your ingestion and syncing tools. Let’s quickly review the infrastructure that this command is provisioning. 
+        </p>
+        <br/>
+        <p>
+          Tapestry uses the Cloudformation template supplied during the <code class="command">init</code> command to create a Cloudformation stack, provisioning AWS resources specifically related to your ingestion tool, such as an S3 staging bucket, an EC2 instance for the tool to run on, and an Application Load Balancer to route traffic to our EC2 instance. The ingestion tool is then configured to extract certain data from your Zoom and Salesforce accounts and send it over to your warehouse.
+        </p>
+        <figure>
+          <img src="assets/images/demo/MISC_kickstart_airbyte_v2.gif">
+          <figcaption>Setup and provisioning of data ingestion stack from the command line.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          You will then be asked to carry out a few steps so the data is transformed in your warehouse using a data model Tapestry provides. Essentially, the data will be aggregated from both sources into one table, filtered for duplicates, and appropriately formatted to be synced to Mailchimp.
+        </p>
+        <br/>
+        <p>
+          To complete the pipeline, <code class="command">kickstart</code> creates another Cloudformation stack, this time spinning up various AWS resources for your syncing tool, such as an Elastic Container Services cluster, which is used to properly run your syncing tool’s application, and another Application Load Balancer to route network traffic to your cluster.
+        </p>
+        <figure>
+          <img src="assets/images/demo/MISC_kickstart_grouparoo_v2.gif">
+          <figcaption>Setup and provisioning of data syncing stack from the command line.</figcaption>
+        </figure>
+        <br/>
+        <h3>5.6 Tapestry Dashboard</h3>
+        <br/>
+        <p>
+          If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard. Additionally, anytime you'd like to view the dashboard, you can run the command <code class="command">tapestry start-server</code> to spin up and launch the UI. 
+        </p>
+        <br/>
+        <p>  
+          The dashboard contains documentation for how to use Tapestry, along with various pages for each section of your pipeline. Each page displays metrics that give you better insight into the health of each component. They also include links to the UIs of all of the tools being used at each stage of the pipeline.
+        </p>
+        <br/>
+        <h3>5.7 Tapestry Data Flow</h3>
+        <br/>
+        <p>
+          Now let’s actually see data flow through the entire pipeline with an example. Let’s use the pipeline we just set up with “kickstart” to grab our Zoom webinar registrants along with our Salesforce contacts and then  sync them into our email marketing tool, Mailchimp.
+        </p>
+        <figure>
+          <img src="assets/images/demo/32_data_flow.png" class="case-study-image">
+          <figcaption>Flow of data with kickstart command.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          Our goal in this example is to extract data from both Zoom and Salesforce and push it to our data warehouse, Snowflake. From there we want to combine the webinar registrants from Zoom and our Salesforce contacts into one single list, and filter out any duplicates along the way. Finally, we want to send this new complete list over to Mailchimp. 
+        </p>
+        <br/>
+        <h4>Zoom Data</h4>
+        <figure>
+          <img src="assets/images/demo/33_zoom_source.png" class="case-study-image-small">
+          <figcaption>Source data from Zoom.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          As you can see from this table, we have several different people who have registered for a Zoom webinar. Of particular note are Diana Prince, Barry Allen, and Betty Rubble. As indicated by the green box, Betty Rubble is a unique contact only found in Zoom, while the red boxes around Diana and Barry indicate contacts that are found in both Zoom and Salesforce. Our goal is to get all three of these entries over to mailchimp, with only one entry each for Diana and Barry.
+        </p>
+        <br/>
+        <h4>Salesforce Data</h4>
+        <figure>
+          <img src="assets/images/demo/34_salesforce_source.png" class="case-study-image-small">
+          <figcaption>Source data from Salesforce.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          Now in Salesforce, we have a different list of customers. In the yellow box there is a contact who is unique to Salesforce, Jack Rogers, and you’ll remember Diana and Bartholomew, aka Barry from our previous Zoom list. 
+        </p>
+        <br/>
+        <p>
+          Even though Barry is going by a different first name in Salesforce, his email is the same across both sources, allowing us to uniquely identify him. This means that when we combine the two lists, we can use the email address field as a unique key to eliminate record duplication.
+        </p>
+        <br/>
+        <h4>Snowflake Warehouse</h4>
+        <figure>
+          <img src="assets/images/demo/35_snowflake_warehouse.png" class="case-study-image-small">
+          <figcaption>Source data and transformed data in the warehouse.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          Once the data from both Zoom and Salesforce have made it into our Snowflake warehouse, we can transform the data by combining both lists, and removing duplicate entries. You can see the two tables highlighted in purple. The Tapestry Webinar Registrants table has all of our Zoom data, and the Tapestry Contact table has all of our Salesforce data. The Email Model table that is highlighted in blue is the newly transformed table that we will sync to our Mailchimp account.
+        </p>
+        <br/>
+        <h3>5.7 Maintenance & Management</h3>
+        <br/>
+        <h4>Rebuild Command</h4>
+        <br/>
+        <p>
+          Tapestry also supplies users with a <code class="command">rebuild</code> command that is specific to the syncing side of the pipeline, related to how the Grouparoo application is updated. While most updates to Airbyte can be done right in their UI, Grouparoo’s dashboard is mainly for application visibility and observability. In order to add, remove, or update any sources or destinations, changes need to be made to the configuration files in your local Grouparoo directory. Once these changes are finalized locally, the image must be rebuilt, pushed to ECR, and the Grouparoo Cloudformation stack must be updated. All of these steps are what Tapestry’s <code class="command">rebuild</code> command automates. The user simply makes the changes themselves to configuration files and then just runs <code class="command">rebuild</code>. Tapestry handles the rest.
+        </p>
+        <figure>
+          <img src="assets/images/demo/ECR_only.png" class="case-study-image-small">
+          <figcaption>Updated Docker image is pushed to ECR.</figcaption>
+        </figure>
+        <br>
+        <h4>Teardown Command</h4>
+        <br>
+        <p>
+          If the user, for whatever reason, decides they are no longer in need of Tapestry’s data pipeline, Tapestry provides <code class="command">tapestry teardown</code> to terminate and remove most of the AWS resources provisioned during deployment, as well as the Airbyte and Grouparoo applications that ran on those resources. We say “most” AWS resources because we leave your S3 bucket and parameters in your Parameters Store intact so that you may retain access to this data even after your pipeline has been torn down.
+        </p>
+        <figure>
+          <img src="assets/images/demo/MISC_teardown_v2.gif">
+          <figcaption>Setup and provisioning of data syncing stack from the command line.</figcaption>
+        </figure>
+
         <!--Section 5-->
         <h2>6 Implementation Challenges</h2>
         <!--Section 6-->
