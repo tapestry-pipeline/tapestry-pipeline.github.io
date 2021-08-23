@@ -382,7 +382,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         </br>
         <p>
-          The ingestion phase is where data is extracted from various sources and moves into a data warehouse. Once in the warehouse this raw data is then stored and is available to manipulate or transform in any way needed. Often transformation is needed at this step so that the data can match the schema of the final destination. Finally, the last phase is syncing this data into external tools that can then perform designated actions.
+          The ingestion phase is where data is extracted from various sources and moves into a data warehouse. Once in the warehouse, this raw data is then stored and is available to manipulate or transform in any way needed. Often transformation is needed at this step so that the data can match the schema of the final destination. Finally, the last phase is syncing this data into external tools that can then perform designated actions.
         </p>
         <br/>
         <h3>3.1 Data Ingestion</h3>
@@ -408,7 +408,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         </br>
         <p>
-          However, with the advent of cloud data warehouses, costs of storing data have decreased dramatically. This makes it more feasible to store <em>all</em> of your user data as RAW data, and to perform any transformations at the warehouse-level to fit a variety of analytic and operational needs. And since transformations aren’t required first, data can be loaded extremely fast.  This approach is known as Extract, Load, Transform, or ELT.
+          However, with the advent of cloud data warehouses, the costs of storing data have decreased dramatically. This makes it more feasible to store <em>all</em> of your user data as <em>raw</em> data and to perform any transformations at the warehouse level to fit a variety of analytic and operational needs. And since transformations aren’t required first, data can be loaded extremely fast.  This approach is known as Extract, Load, Transform, or ELT.
         </p>
         <figure>
           <img src="assets/images/architecture/41_ELT.png" class="case-study-image">
@@ -423,7 +423,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <img src="assets/images/architecture/42_airbyte_card.png" class="case-study-image">
         </figure>
         <p>
-          While many data ingestion tools are available, like Fivetran, Stitch and Meltano, we ultimately went with Airbyte. We liked that it was open-source, had standardized API connectors, a robust UI, and strong community support. 
+          While many data ingestion tools are available, like Fivetran, Stitch, and Meltano, we ultimately went with Airbyte. We liked that it was open-source, had standardized API connectors, a robust UI, and strong community support. 
         </p>
         <br/>
         <h4>Data Ingestion: How We Deploy Airbyte</h4>
@@ -434,7 +434,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <br/>
         <figure>
           <img src="assets/images/architecture/43_dataingestion_dockerconnectors.png">
-          <figcaption>Airbyte runs as a Docker container, and creates additional connectors as containers.</figcaption>
+          <figcaption>Airbyte runs as a Docker container and creates additional connectors as containers.</figcaption>
         </figure>
         <br/>
         <p>
@@ -446,11 +446,11 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br/>
         <p>
-          While we might have referred to use a container orchestration service to horizontally scale the computing resources used by each container, an EC2 instance still allows for vertical scaling of the entire instance.
+          While we might have preferred to use a container orchestration service to horizontally scale the computing resources used by each container, an EC2 instance still allows for vertical scaling of the entire instance.
         </p>
         <br/>
         <p>
-          Placing a load balancer in front of Airbyte means traffic cannot reach the EC2 instance directly. Network traffic must first pass through the load balancer before it’s routed to the Airbyte instance. This allows us to take advantage of additional security measures and keep the IP address of the actual instance hidden. This keeps the instance safe from any port scanning attacks and also takes advantage of AWS’s built in protection from DDOS attacks.
+          Placing a load balancer in front of Airbyte means traffic cannot reach the EC2 instance directly. Network traffic must first pass through the load balancer before it’s routed to the Airbyte instance. This allows us to take advantage of additional security measures and keep the IP address of the actual instance hidden. This keeps the instance safe from any port scanning attacks and also takes advantage of AWS’s built-in protection from DDOS attacks.
         </p>
         <br/>
         <h3>Data Storage and Transformation</h3>
@@ -503,7 +503,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <p>
-          Ideally, we would like a SQL-based data transformation tool that could be utilized by non-developers to create data models based on the warehouse, and put that data into action more quickly. 
+          Ideally, we would like a SQL-based data transformation tool that could be utilized by non-developers to create data models based on the warehouse and put that data into action more quickly. 
         </p>
         <br/>
         <p>
@@ -511,7 +511,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <p>
-          When considering these requirements for a transformation tool, one option stood out because it encompassed all features we wanted, and was free and open-source. That tool was DBT, or Data Build Tool. We opted to go with the cloud version of DBT because of its ease of use and simple to understand UI.
+          When considering these requirements for a transformation tool, one option stood out because it encompassed all features we wanted and was free and open-source. That tool was DBT, or Data Build Tool. We opted to go with the cloud version of DBT because of its ease of use and simple to understand UI.
         </p>
         <br/>
         <h4>Data Transformation: How We Use DBT</h4>
@@ -541,7 +541,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <p>
-          This concept of syncing data back into your tools is relatively new and has recently been coined  “reverse ETL”. If you recall, ETL and ELT are concerned with moving data from your tools into your warehouse, and reverse ETL moves data out of your warehouse and into your business’s operational tools. This term however, while becoming quite common, does not describe the process well, which is why we prefer the term “data syncing.” 
+          This concept of syncing data back into your tools is relatively new and has recently been coined  “reverse ETL”. If you recall, ETL and ELT are concerned with moving data from your tools into your warehouse, and reverse ETL moves data out of your warehouse and into your business’s operational tools. This term, however, while becoming quite common, does not describe the process well, which is why we prefer the term “data syncing.” 
         </p>
         <br/>
         <h4>Data Syncing Tool: Grouparoo</h4>
@@ -575,7 +575,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <p>
-          This architecture informed how Tapestry chose to deploy Grouparoo to the cloud. Given its distributed nature of this architecture we thought it was appropriate to deploy each component as its own Docker container.
+          This architecture informed how Tapestry chose to deploy Grouparoo to the cloud. Given the distributed nature of this architecture, we thought it was appropriate to deploy each component as its own Docker container.
         </p>
         <figure>
           <img src="assets/images/architecture/57_datasyncing_docker.png">
