@@ -638,7 +638,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <!--Section 5-->
         <h2>5 Using Tapestry</h2>
         <br/>
-        <h3>5.1 Prerequisites</h3>
+        <h3>5.1 Prerequisites & Installing Tapestry</h3>
         <p>
           Getting started with Tapestry is pretty simple. You will need the following:
         </p>
@@ -649,16 +649,14 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </ul>
         <br/>
         <p>
-          If you were the developer, you first need Node and NPM installed, as Tapestry is a Node package. Additionally, since Tapestry is specifically configured to provision a number of AWS resources, an AWS account along with AWS CLI installed on your machine, are both required. Finally, users will also need to have a Docker account and have it installed on their machines.
+          If you were the developer, you first need Node and NPM installed since Tapestry is a Node package. Additionally, since Tapestry is specifically configured to provision a number of AWS resources, an AWS account, along with AWS CLI installed on your machine, are both required. Finally, users will need to have a Docker account and have it installed on their machines.
         </p>
-        <br/>
-        <h3>5.2 Installing Tapestry</h3>
         <br/>
         <p>
-          After these preliminary steps, all you would need to do is run <code class="command">npm i -g tapestry-pipeline</code> with a global flag, and a host of commands will be provided to you.
+          After these preliminary steps, all you would need to do to get started is run <code class="command">npm i -g tapestry-pipeline</code>, and a host of commands will be provided to you.
         </p>
         <br/>
-        <h3>5.3 Tapestry Commands</h3>
+        <h3>5.2 Tapestry Commands</h3>
         <figure>
           <img src="assets/images/demo/26_commandlist_v2.png">
           <figcaption>Tapestry's list of commands.</figcaption>
@@ -679,7 +677,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <img src="assets/images/demo/27_init_v2.gif">
           <figcaption>Init from the command line.</figcaption>
         </figure>
-        <h3>5.4 Deploy vs. Kickstart Commands</h3>
+        <h3>5.3 Deploy vs. Kickstart Commands</h3>
         <br/>
         <p>
           Next, you have a choice between the <code class="command">tapestry deploy</code> or <code class="command">tapestry kickstart</code> commands. Once you make your selection, Tapestry provides all the necessary configuration files for the data syncing phase. 
@@ -693,7 +691,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           Both commands automate the deployment of a fully operational pipeline, but <code class="command">kickstart</code> includes two pre-configured sources,  Zoom and Salesforce, along with one destination, Mailchimp. These pre-configured third-party tools set up your pipeline to have immediate end-to-end data flow, beginning with data ingestion and ending with data syncing into these tools.
         </p>
         <br/>
-        <h3>5.5 End-to-End Demo</h3>
+        <h3>5.4 End-to-End Demo</h3>
         <br/>
         <p>
           To better show the full flow of data through a Tapestry pipeline, this section will walk through our <code class="command">tapestry kickstart</code> command. 
@@ -734,7 +732,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <figcaption>Setup and provisioning of data syncing stack from the command line.</figcaption>
         </figure>
         <br/>
-        <h3>5.6 Tapestry Dashboard</h3>
+        <h3>5.5 Tapestry Dashboard</h3>
         <br/>
         <p>
           If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard. Additionally, anytime you'd like to view the dashboard, you can run the command <code class="command">tapestry start-server</code> to spin up and launch the UI. 
@@ -744,7 +742,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           The dashboard contains documentation for how to use Tapestry, along with various pages for each section of your pipeline. Each page displays metrics that give you better insight into the health of each component. They also include links to the UIs of all of the tools being used at each stage of the pipeline.
         </p>
         <br/>
-        <h3>5.7 Tapestry Data Flow</h3>
+        <h3>5.6 Tapestry Data Flow</h3>
         <br/>
         <p>
           Now let’s actually see data flow through the entire pipeline with an example. Let’s use the pipeline we just set up with “kickstart” to grab our Zoom webinar registrants along with our Salesforce contacts and then  sync them into our email marketing tool, Mailchimp.
