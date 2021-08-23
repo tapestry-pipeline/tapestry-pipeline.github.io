@@ -385,13 +385,13 @@ Data modeling and business intelligence or analytics tools built on top of the w
           The ingestion phase is where data is extracted from various sources and moves into a data warehouse. Once in the warehouse this raw data is then stored and is available to manipulate or transform in any way needed. Often transformation is needed at this step so that the data can match the schema of the final destination. Finally, the last phase is syncing this data into external tools that can then perform designated actions.
         </p>
         <br/>
-        <h3>3.1. Data Ingestion</h3>
+        <h3>3.1 Data Ingestion</h3>
         <figure>
           <img src="assets/images/architecture/40_pipelineoverview_ingestion_color.png" class="case-study-image">
         </figure>
         <br/>
         <p>
-          The ingestion phase is where data is extracted from various sources and moves into a data warehouse. Once in the warehouse this raw data is then stored and is available to manipulate or transform in any way needed. Often transformation is needed at this step so that the data can match the schema of the final destination. Finally, the last phase is syncing this data into external tools that can then perform designated actions.
+          An effective data extraction tool will contain and manage a library of API connectors, specific to each source. This management of connectors abstracts away the maintenance required to grab data from ever-changing API endpoints. In addition, this tool should allow for scheduling data extraction and  keeping track of global state so that only new data is pulled.
         </p>
         <br/>
         <h4>ETL v ELT</h4>
@@ -427,22 +427,23 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <h4>Data Ingestion: How We Deploy Airbyte</h4>
+        <br/>
+        <p>
+          Using Airbyte, we’re able to extract raw data from many third-party tools through its library of managed API wrappers, covering the E and L steps of ELT. Both the Airbyte application itself, as well as each of its connectors, all run on their own individual Docker containers. Airbyte provides the Docker image to deploy their application, and Tapestry configures the warehouse as a destination for Airbyte via a series of API calls. 
+        </p>
+        <br/>
         <figure>
-          <img src="assets/images/architecture/43_dataingestion_gif.gif">
-          <figcaption>Tapestry's Initial Data Ingestion Architecture</figcaption>
+          <img src="assets/images/architecture/43_dataingestion_dockerconnectors.png">
+          <figcaption>Airbyte runs as a Docker container, and creates additional connectors as containers.</figcaption>
         </figure>
-        <br/>
-        <p>
-          Using Airbyte, we’re able to extract raw data from many third-party tools through its library of managed API wrappers, covering the E and L steps of ELT. Both the Airbyte application itself, as well as each of its connectors, all run on their own individual Ddocker containers.
-        </p>
-        <br/>
-        <p>
-          Airbyte provides the Docker image to deploy their application, and Tapestry configures the warehouse as a destination for Airbyte via a series of API calls. 
-        </p>
         <br/>
         <p>
           Essentially the main application’s container needs to be able to create new Docker containers as users set up more and more connections. Due to this necessity, Airbyte recommends the use of an AWS EC2 instance as a virtual private server for hosting.
         </p>
+        <figure>
+          <img src="assets/images/architecture/43_dataingestion_EC2_ALB_purple.png">
+          <figcaption>Airbyte data ingestion tool, deployed on EC2 Instance with an Application Load Balancer.</figcaption>
+        </figure>
         <br/>
         <p>
           While we might have referred to use a container orchestration service to horizontally scale the computing resources used by each container, an EC2 instance still allows for vertical scaling of the entire instance.
@@ -481,9 +482,8 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           Initially, we attempted to load data directly into Snowflake from third party tools, but we found the data transfer to be particularly slow. This led us to investigate using a staging area with Snowflake and how this impacts data loading.         </p>
         </p>
-        <br/>
         <figure>
-          <img src="assets/images/architecture/48_stagingbucket_purple.png">
+          <img src="assets/images/architecture/48_stagingbucket_purple2.png">
           <figcaption>Tapestry's Data Storage with a Staging Bucket</figcaption>
         </figure>
         <p>
@@ -516,7 +516,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <br/>
         <h4>Data Transformation: How We Use DBT</h4>
         <figure>
-          <img src="assets/images/architecture/53_warehousearchitecturev2.png">
+          <img src="assets/images/architecture/53_warehousearchitecturev3.png" class="case-study-image">
         </figure>
         <br/>
         <p>
@@ -545,7 +545,79 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <h4>Data Syncing Tool: Grouparoo</h4>
-        <h4></h4>
+        <figure>
+          <img src="assets/images/architecture/55_grouparoo_card.png" class="case-study-image">
+        </figure>
+        <p>
+          While proprietary tools exist in the data syncing space, like Census and Hightouch,  we opted to find one that was open source. 
+        </p>
+        <br/>
+        <p>
+          Grouparoo is just such a tool, does everything that we need, and they have a Kangaroo logo to boot, making them an easy pick.
+        </p>
+        <br/>
+        <h4>Data Syncing: How we Deploy Grouparoo</h4>
+        <br/>
+        <p>
+          Grouparoo recommends deploying their web application stack with an application layer  and a data layer. 
+        </p>
+        <figure>
+          <img src="assets/images/architecture/56_grouparoo_recommended_arch.png">
+          <figcaption>Grouparoo's Recommended Architecture</figcaption>
+        </figure>
+        <br/>
+        <p>
+          The application layer is where a worker server and web server will reside. When a request to sync data up with external sources comes in, it first hits a load balancer which directs the request to the web server. From there, the web server can then off-load the task to the Worker if the task will take a long time to complete. When these slower jobs are run in the background, it improves the responsiveness of the web server.
+        </p>
+        <br/>
+        <p>
+          The data layer houses the application database as well as the cache. Grouparoo recommends using Redis to serve as both the cache and also as the background-job queue for the worker server. They also suggest using Postgres as the database where your user data will be stored.
+        </p>
+        <br/>
+        <p>
+          This architecture informed how Tapestry chose to deploy Grouparoo to the cloud. Given its distributed nature of this architecture we thought it was appropriate to deploy each component as its own Docker container.
+        </p>
+        <figure>
+          <img src="assets/images/architecture/57_datasyncing_docker.png">
+          <figcaption>Multi-Container Docker Deployment</figcaption>
+        </figure>
+        <br/>
+        <p>
+          This way each container would have only one concern, and the decoupling of responsibilities would make it easier to horizontally scale in the future. First, Tapestry provides a generic Redis and Postgres Docker image to run the containers for the data layer. Grouparoo provides a Docker image that can be used for deploying the web and worker service. Starting with their base image, we add the necessary configuration to integrate Snowflake as the data warehouse for Grouparoo to use as its primary data source. 
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/architecture/57_datasyncing_ECR_blue.png">
+          <figcaption>Elastic Container Registry</figcaption>
+        </figure>
+        <br/>
+        <p>
+          Of note, Grouparoo uses Javascript or JSON files to store configuration details.  Because of this, any configuration changes require the Grouparoo Docker image to be rebuilt. So we chose to push the image we provide to a repository on AWS’s Elastic Container Registry, giving the user easy and private access for any future updates.  
+        </p>
+        <br/>
+        <p>
+          Because this is a multi-container deployment, Tapestry had to consider how best to handle container orchestration. Some popular options for container orchestration include Kubernetes, Docker Swarm, and Amazon Elastic Container Service, or ECS. Kubernetes and Docker Swarm are both highly configurable; however, the learning curve is steep. So we decided to use ECS to handle container orchestration for Tapestry’s Grouparoo deployment because it manages and scales containers efficiently and automatically. This choice also gave us the ability to use the recently rolled-out ECS and Docker Compose integration, which simplified this process even more.
+        </p>
+        <figure>
+          <img src="assets/images/architecture/58_docker_ecs.png" class="case-study-image">
+        </figure>
+        <br/>
+        <p>
+           Docker Compose is a tool that allows developers to define and run multi-container applications via a YAML file. With this integration, we could seamlessly use this same docker-compose file to deploy the Grouparoo application and all its dependencies as an ECS cluster. AWS resources are created automatically based on the specifications in this file. This works because there are built-in mappings between the Docker containers defined in the file and ECS tasks. 
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/architecture/59_datasyncing_fullv2.png" alt="">
+          <figcaption>Elastic Container Service and Fargate</figcaption>
+        </figure>
+        <p>
+          ECS not only manages these containers, but the servers they live on as well. This occurs via AWS Fargate, a service that abstracts away server provisioning and handles it entirely on the user’s behalf. We also placed a load balancer in front of the ECS cluster for all of the same security reasons we placed one in front of our ingestion tool. Additionally, since we use a load balancer, we are also set up nicely to horizontally scale in the future if needed. 
+        </p>
+        <br/>
+        <p>
+          Once Grouparoo is deployed, you are ready to start pulling data from your warehouse, and syncing it into other third party tools, like Mailchimp.
+        </p>
+
          
 
 

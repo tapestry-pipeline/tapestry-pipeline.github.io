@@ -304,6 +304,12 @@ label {
   width: 70%;
 }
 
+.case-study-image-small {
+  margin: 20px auto;
+  display: block;
+  width: 50%;
+}
+
 .demo {
   width: 100%;
 }
