@@ -644,12 +644,12 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <ul>
           <li>Node and NPM</li>
-          <li>AWS account and AWS CLI</li>
+          <li>An AWS account and AWS CLI</li>
           <li>Docker</li>
         </ul>
         <br/>
         <p>
-          If you were the developer, you first need Node and NPM installed since Tapestry is a Node package. Additionally, since Tapestry is specifically configured to provision a number of AWS resources, an AWS account, along with AWS CLI installed on your machine, are both required. Finally, users will need to have a Docker account and have it installed on their machines.
+          If you were the developer, you would first need Node and NPM installed since Tapestry is a Node package. Since Tapestry provisions several AWS resources, you are required to have an AWS account and the AWS Command Line Interface configured on your machine. Finally, you will need to have a Docker account and have it installed on your machine.
         </p>
         <br/>
         <p>
@@ -667,15 +667,16 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <figure>
           <img src="assets/images/demo/27_tapestry_init_computer.png" class="case-study-image-small">
+          <figcaption>Tapestry provides a CloudFormation template during the init command.</figcaption>
         </figure>
         <br/>
         <p>
-          With <code class="command">tapestry init</code>, you give your project a name and Tapestry will provision a project folder along with an AWS Cloudformation template, which allows you to provision and configure AWS resources with code. This template in particular is used to provision resources for the data ingestion phase of the pipeline. What Tapestry provides for the syncing phase of your pipeline is dependent upon which command you run next.
+          With <code class="command">tapestry init</code>, you give your project a name, and Tapestry will provision a project folder along with an AWS CloudFormation template. This template allows you to provision and configure AWS resources with code. In particular, this template is used to provision resources for the data ingestion phase of the pipeline. What Tapestry provides for the syncing phase of your pipeline is dependent upon which command you run next.
         </p>
         <br/>
         <figure>
           <img src="assets/images/demo/27_init_v2.gif">
-          <figcaption>Init from the command line.</figcaption>
+          <figcaption>Running <em>tapestry init</em> from the command line.</figcaption>
         </figure>
         <h3>5.3 Deploy vs. Kickstart Commands</h3>
         <br/>
@@ -684,11 +685,10 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <figure>
           <img src="assets/images/demo/28_deploy_v_kickstart.png" class="case-study-image">
-          <figcaption>Differences between deploy and kickstart commands.</figcaption>
         </figure>
         <br/>
         <p>
-          Both commands automate the deployment of a fully operational pipeline, but <code class="command">kickstart</code> includes two pre-configured sources,  Zoom and Salesforce, along with one destination, Mailchimp. These pre-configured third-party tools set up your pipeline to have immediate end-to-end data flow, beginning with data ingestion and ending with data syncing into these tools.
+          Both commands automate the deployment of a fully operational pipeline, but <code class="command">kickstart</code> includes two pre-configured sources,  Zoom and Salesforce, along with one destination, Mailchimp. These pre-configured third-party tools set up your pipeline to have immediate end-to-end data flow, beginning with data ingestion and ending with data syncing into these tools. Regardless of which command you choose, note that a Snowflake account is required for <em>both</em> <code class="command">deploy</code> and <code class="command">kickstart</code>.
         </p>
         <br/>
         <h3>5.4 End-to-End Demo</h3>
@@ -709,7 +709,11 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br/>
         <p>
-          After your information has been collected, <code class="command">kickstart</code> continues by creating the necessary databases and tables within your data warehouse to be utilized by both your ingestion and syncing tools. Let’s quickly review the infrastructure that this command is provisioning. 
+          After your information has been collected, <code class="command">kickstart</code> continues by creating the necessary databases and tables within your data warehouse to be utilized by both your ingestion and syncing tools. 
+        </p>
+        <br/>
+        <p>
+          Let’s quickly review the infrastructure that this command is provisioning. 
         </p>
         <figure>
           <img src="assets/images/architecture/43_data_ingestion.gif" class="case-study-image">
@@ -717,7 +721,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br/>
         <p>
-          Tapestry uses the Cloudformation template supplied during the <code class="command">init</code> command to create a Cloudformation stack, provisioning AWS resources specifically related to your ingestion tool, such as an S3 staging bucket, an EC2 instance for the tool to run on, and an Application Load Balancer to route traffic to our EC2 instance. The ingestion tool is then configured to extract certain data from your Zoom and Salesforce accounts and send it over to your warehouse.
+          Tapestry uses the CloudFormation template supplied during the <code class="command">init</code> command to create a CloudFormation stack, provisioning AWS resources specifically related to your ingestion tool, Airbyte. These resources include an S3 staging bucket, an EC2 instance for Airbyte to run on, and an Application Load Balancer to route traffic to our EC2 instance. Airbyte is then configured to extract certain data from your Zoom and Salesforce accounts and send it over to your warehouse.
         </p>
         <figure>
           <img src="assets/images/demo/MISC_kickstart_airbyte_v2.gif">
@@ -725,15 +729,24 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br/>
         <p>
-          You will then be asked to carry out a few steps so the data is transformed in your warehouse using a data model Tapestry provides. Essentially, the data will be aggregated from both sources into one table, filtered for duplicates, and appropriately formatted to be synced to Mailchimp.
+          You will then be asked to carry out a few steps so the data is transformed in your warehouse using the data model Tapestry provides for DBT. The raw data will be aggregated from both sources into one transformed table, filtered for duplicates, and appropriately formatted to be synced to Mailchimp.
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/demo/dbt-run.PNG" class="case-study-image">
+          <figcaption>A successful DBT run, transforming data in the warehouse.</figcaption>
+        </figure>
+        <br/>
+        <p>
+          To complete the pipeline, <code class="command">kickstart</code> creates another CloudFormation stack, this time spinning up various AWS resources for your syncing tool, Grouparoo.
         </p>
         <figure>
-          <img src="assets/images/architecture/57_59_datasyncing.gif" class="case-study-image">
+          <img src="assets/images/architecture/57_59_datasyncing.gif" class="large-image">
           <figcaption>Data syncing stack created during deployment.</figcaption>
         </figure>
         <br/>
         <p>
-          To complete the pipeline, <code class="command">kickstart</code> creates another Cloudformation stack, this time spinning up various AWS resources for your syncing tool, such as an Elastic Container Services cluster, which is used to properly run your syncing tool’s application, and another Application Load Balancer to route network traffic to your cluster.
+          These resources include an Elastic Container Services cluster to run your Grouparoo application, an Elastic Container Registry repository with your Grouparoo Docker image stored, and another Application Load Balancer to route network traffic to your cluster.
         </p>
         <figure>
           <img src="assets/images/demo/MISC_kickstart_grouparoo_v2.gif">
@@ -743,26 +756,36 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <h3>5.5 Tapestry Dashboard</h3>
         <br/>
         <p>
-          If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard. Additionally, anytime you'd like to view the dashboard, you can run the command <code class="command">tapestry start-server</code> to spin up and launch the UI. 
+          If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard. Additionally, anytime you'd like to view the dashboard, you can run the command <code class="command">tapestry start-server</code> to spin up and launch the UI at http://localhost:7777. 
         </p>
         <figure>
           <img src="assets/images/demo/tap_ui_home_v2.png">
         </figure>
         <br/>
         <p>  
-          The dashboard contains documentation for how to use Tapestry, along with various pages for each section of your pipeline. Each page displays metrics that give you better insight into the health of each component. They also include links to the UIs of all of the tools being used at each stage of the pipeline.
+          The dashboard contains documentation for how to use Tapestry, along with various pages for each section of your pipeline. Each page displays metrics that give you better insight into the health of each component. They also include links to the UIs for all your date pipeline tools: Airbyte, Snowflake, DBT, and Grouparoo.
         </p>
         <br/>
         <figure>
           <img src="assets/images/demo/tap_ui_carousel_v2.gif">
         </figure>
         <br/>
-        
-
+        <p>Some important metrics we track on the dashboard include:</p>
+        <ul>
+          <li>Number of data ingestion sources currently operational</li>
+          <li>Number of data syncing destinations currently operational</li>
+          <li>EC2 instance status</li>
+          <li>ECS cluster status</li> 
+          <li>CPU utilization</li>
+          <li>List of source tables in the data warehouse</li>
+          <li>List of transformed tables created in the data warehouse</li> 
+          <li>Logs for each tool for increased observability</li>
+        </ul>
+        <br/>
         <h3>5.6 Tapestry Data Flow</h3>
         <br/>
         <p>
-          Now let’s actually see data flow through the entire pipeline with an example. Let’s use the pipeline we just set up with “kickstart” to grab our Zoom webinar registrants along with our Salesforce contacts and then  sync them into our email marketing tool, Mailchimp.
+          Now let’s actually see data flow through the entire pipeline with an example using the <code class="command">tapestry kickstart</code> command.
         </p>
         <figure>
           <img src="assets/images/demo/32_data_flow.png" class="case-study-image">
@@ -770,7 +793,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br/>
         <p>
-          Our goal in this example is to extract data from both Zoom and Salesforce and push it to our data warehouse, Snowflake. From there we want to combine the webinar registrants from Zoom and our Salesforce contacts into one single list, and filter out any duplicates along the way. Finally, we want to send this new complete list over to Mailchimp. 
+          Our goal in this example is to extract data from both Zoom and Salesforce and push it to our data warehouse, Snowflake. From there, we want to combine a list of webinar registrants from Zoom and Salesforce contacts into one single table, and filter out any duplicates along the way. Finally, we want to send this complete set of data over to Mailchimp. 
         </p>
         <br/>
         <h4>Zoom Data</h4>
@@ -780,17 +803,17 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br/>
         <p>
-          As you can see from this table, we have several different people who have registered for a Zoom webinar. Of particular note are Diana Prince, Barry Allen, and Betty Rubble. As indicated by the green box, Betty Rubble is a unique contact only found in Zoom, while the red boxes around Diana and Barry indicate contacts that are found in both Zoom and Salesforce. Our goal is to get all three of these entries over to mailchimp, with only one entry each for Diana and Barry.
+          As you can see from this table, we have several different people who have registered for a Zoom webinar. Of particular note are Diana Prince, Barry Allen, and Betty Rubble. As indicated in blue, Betty Rubble is a unique contact only found in Zoom, while the purple around Diana and Barry indicates that they are contacts found in both Zoom and Salesforce. Our goal is to get all three of these entries over to Mailchimp, with only one entry each for Diana and Barry.
         </p>
         <br/>
         <h4>Salesforce Data</h4>
         <figure>
-          <img src="assets/images/demo/34_salesforce_source.png" class="case-study-image-small">
+          <img src="assets/images/demo/34_salesforce_source.png" class="large-image">
           <figcaption>Source data from Salesforce.</figcaption>
         </figure>
         <br/>
         <p>
-          Now in Salesforce, we have a different list of customers. In the yellow box there is a contact who is unique to Salesforce, Jack Rogers, and you’ll remember Diana and Bartholomew, aka Barry from our previous Zoom list. 
+          Now in Salesforce, we have a different list of customers. In yellow, there is a contact who is unique to Salesforce, Jack Rogers, while Diana and Bartholomew, a.k.a. "Barry" are in purple again, as seen in the Zoom list. 
         </p>
         <br/>
         <p>
@@ -799,25 +822,34 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <br/>
         <h4>Snowflake Warehouse</h4>
         <figure>
-          <img src="assets/images/demo/35_snowflake_warehouse.png" class="case-study-image-small">
+          <img src="assets/images/demo/35_snowflake_warehouse.png">
           <figcaption>Source data and transformed data in the warehouse.</figcaption>
         </figure>
         <br/>
         <p>
-          Once the data from both Zoom and Salesforce have made it into our Snowflake warehouse, we can transform the data by combining both lists, and removing duplicate entries. You can see the two tables highlighted in purple. The Tapestry Webinar Registrants table has all of our Zoom data, and the Tapestry Contact table has all of our Salesforce data. The Email Model table that is highlighted in blue is the newly transformed table that we will sync to our Mailchimp account.
+          Once the data from both Zoom and Salesforce have made it into our Snowflake warehouse, we can transform the data by combining both lists, and removing duplicate entries. You can see the two tables highlighted in purple. The TAPESTRY_WEBINAR_REGISTRANTS table has all of our Zoom data, and the TAPESTRY_CONTACT table has all of our Salesforce data. The EMAIL_MODEL table that is highlighted in blue is the newly transformed table that we will sync to our Mailchimp account.
         </p>
         <br/>
         <h4>Mailchimp</h4>
+        <figure>
+          <img src="assets/images/demo/36_mailchimpdestination.png" class="large-image">
+          <figcaption>Synced data in Mailchimp destination.</figcaption>
+        </figure>
         <br/>
         <p>
           Finally, here in Mailchimp, we see that we’ve successfully synced all of our Zoom webinar registrants and Salesforce contacts, and made sure that there is only one entry for Barry and Diana. You can also see that our unique users, Betty and Jack made it over as well.
         </p>
+        <br/>
         <h3>5.7 Maintenance & Management</h3>
         <br/>
         <h4>Rebuild Command</h4>
         <br/>
         <p>
-          Tapestry also supplies users with a <code class="command">rebuild</code> command that is specific to the syncing side of the pipeline, related to how the Grouparoo application is updated. While most updates to Airbyte can be done right in their UI, Grouparoo’s dashboard is mainly for application visibility and observability. In order to add, remove, or update any sources or destinations, changes need to be made to the configuration files in your local Grouparoo directory. Once these changes are finalized locally, the image must be rebuilt, pushed to ECR, and the Grouparoo Cloudformation stack must be updated. All of these steps are what Tapestry’s <code class="command">rebuild</code> command automates. The user simply makes the changes themselves to configuration files and then just runs <code class="command">rebuild</code>. Tapestry handles the rest.
+          Tapestry also supplies users with a <code class="command">tapestry rebuild</code> command that is specific to the syncing side of the pipeline. While most updates to Airbyte can be done right in their UI, Grouparoo’s dashboard is mainly for application visibility and observability. In order to add, remove, or update any sources or destinations, changes need to be made to the configuration files in your local Grouparoo directory. 
+        </p>
+        <br/>
+        <p>
+          Once these changes are finalized locally, the image must be rebuilt, pushed to a private repository in the Elastic Container Registry, and the Grouparoo CloudFormation stack must be updated. All of these steps are what Tapestry’s <code class="command">rebuild</code> command automates. The user simply makes the changes themselves to the configuration files and then runs <code class="command">tapestry rebuild</code>. Tapestry handles the rest.
         </p>
         <figure>
           <img src="assets/images/demo/ECR_only.png" class="case-study-image-small">
@@ -827,11 +859,16 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <h4>Teardown Command</h4>
         <br>
         <p>
-          If the user, for whatever reason, decides they are no longer in need of Tapestry’s data pipeline, Tapestry provides <code class="command">tapestry teardown</code> to terminate and remove most of the AWS resources provisioned during deployment, as well as the Airbyte and Grouparoo applications that ran on those resources. We say “most” AWS resources because we leave your S3 bucket and parameters in your Parameters Store intact so that you may retain access to this data even after your pipeline has been torn down.
+          If the user, for whatever reason, decides they are no longer in need of Tapestry’s data pipeline, Tapestry provides <code class="command">tapestry teardown</code> to terminate and remove most of the AWS resources provisioned during deployment, as well as the Airbyte and Grouparoo applications that ran on those resources. 
         </p>
+        <br/>
+        <p>
+          We say “most” AWS resources because we do not destroy your S3 bucket, nor do we destory any parameters in your SSM Parameter Store. Tapestry uses the Parameter Store to store user inputs, such as API keys and various account credentials. These resources remain intact so that you can retain access to this data even after your pipeline has been torn down.
+        </p>
+        <br/>
         <figure>
           <img src="assets/images/demo/MISC_teardown_v2.gif">
-          <figcaption>Teardown from the command line.</figcaption>
+          <figcaption>Running <em>tapestry teardown</em> from the command line.</figcaption>
         </figure>
         <br/>
         <!--Section 6-->
