@@ -807,6 +807,11 @@ Data modeling and business intelligence or analytics tools built on top of the w
           Once the data from both Zoom and Salesforce have made it into our Snowflake warehouse, we can transform the data by combining both lists, and removing duplicate entries. You can see the two tables highlighted in purple. The Tapestry Webinar Registrants table has all of our Zoom data, and the Tapestry Contact table has all of our Salesforce data. The Email Model table that is highlighted in blue is the newly transformed table that we will sync to our Mailchimp account.
         </p>
         <br/>
+        <h4>Mailchimp</h4>
+        <br/>
+        <p>
+          Finally, here in Mailchimp, we see that we’ve successfully synced all of our Zoom webinar registrants and Salesforce contacts, and made sure that there is only one entry for Barry and Diana. You can also see that our unique users, Betty and Jack made it over as well.
+        </p>
         <h3>5.7 Maintenance & Management</h3>
         <br/>
         <h4>Rebuild Command</h4>
@@ -858,7 +863,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <figure>
-          <img src="assets/images/challenges/48_SQL_script.png">
+          <img src="assets/images/challenges/scrollingSQLscript.gif">
         </figure>
         <p>
           We found that Snowflake provides a Node.js SDK, which would allow us to communicate with the Snowflake warehouse. Since the SDK only allows one SQL statement to be executed at a time, we needed to store each statement as an array element, and then iterate through each one individually. 
@@ -893,6 +898,9 @@ Data modeling and business intelligence or analytics tools built on top of the w
           One particularly interesting challenge when deploying Grouparoo was determining how to inject sensitive user inputs, like API keys or passwords, into the Docker container for Grouparoo’s web application. For Grouparoo, we needed to reference these inputs in configuration files as environmental variables.
         </p>
         <br/>
+        <figure>
+          <img src="assets/images/challenges/60_injectsecrets.png">
+        </figure>
         <p>
           We soon learned that you can pass environmental variables to a container by referencing a local .env file in a Docker Compose yaml file. This solved part of the problem; the Docker container could now access any variables we provided in this file.           However, because we were not receiving the user inputs until runtime, this .env file had to be dynamically generated after these inputs were received via the CLI, but before the container could run on ECS. 
         </p>
