@@ -49,7 +49,7 @@
         </div>
         <div class="navigation-right">
           <div class="login-buttons">
-            <a href="" target="_blank">
+            <a href="https://github.com/tapestry-pipeline" target="_blank">
               <span style="color: #161d6f">
                 <i class="fab fa-github fa-lg"></i>
               </span>
@@ -451,7 +451,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <br/>
         <figure>
-          <img src="assets/images/architecture/43_dataingestion_dockerconnectors.png">
+          <img src="assets/images/architecture/43_dataingestion_dockerconnectors_v2.png">
           <figcaption>Airbyte runs as a Docker container and creates additional connectors as containers.</figcaption>
         </figure>
         <br/>
@@ -531,7 +531,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <br/>
         <h4>Data Transformation: How We Use DBT</h4>
         <figure>
-          <img src="assets/images/architecture/53_warehousearchitecturev3.png" class="case-study-image">
+          <img src="assets/images/architecture/53_warehousearchitecturev3.png" class="case-study-image-small">
           <figcaption>Data aggregation with DBT.</figcaption>
         </figure>
         <br/>
@@ -578,7 +578,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           Grouparoo recommends deploying their web application stack with an application layer  and a data layer. 
         </p>
         <figure>
-          <img src="assets/images/architecture/56_grouparoo_recommended_arch.png">
+          <img src="assets/images/architecture/56_grouparoo_recommended_arch.png" class="case-study-image-small">
           <figcaption>Grouparoo's recommended deployment strategy.</figcaption>
         </figure>
         <br/>
@@ -627,7 +627,7 @@ Data modeling and business intelligence or analytics tools built on top of the w
           ECS not only manages these containers, but the servers they live on as well. This occurs via AWS Fargate, a service that abstracts away server provisioning and handles it entirely on the user’s behalf. We also placed a load balancer in front of the ECS cluster for all of the same security reasons we placed one in front of our ingestion tool. Additionally, since we use a load balancer, we are also set up nicely to horizontally scale in the future if needed. 
         </p>
         <figure>
-          <img src="assets/images/architecture/59_datasyncing_fullv2.png" alt="">
+          <img src="assets/images/architecture/59_datasyncing_fullv3.jpg" alt="">
           <figcaption>Grouparoo deployed with ECS and Fargate, with the addition of an Application Load Balancer.</figcaption>
         </figure>
         <br/>
@@ -711,6 +711,10 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           After your information has been collected, <code class="command">kickstart</code> continues by creating the necessary databases and tables within your data warehouse to be utilized by both your ingestion and syncing tools. Let’s quickly review the infrastructure that this command is provisioning. 
         </p>
+        <figure>
+          <img src="assets/images/architecture/43_data_ingestion.gif" class="case-study-image">
+          <figcaption>Data ingestion stack created during deployment.</figcaption>
+        </figure>
         <br/>
         <p>
           Tapestry uses the Cloudformation template supplied during the <code class="command">init</code> command to create a Cloudformation stack, provisioning AWS resources specifically related to your ingestion tool, such as an S3 staging bucket, an EC2 instance for the tool to run on, and an Application Load Balancer to route traffic to our EC2 instance. The ingestion tool is then configured to extract certain data from your Zoom and Salesforce accounts and send it over to your warehouse.
@@ -723,6 +727,10 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           You will then be asked to carry out a few steps so the data is transformed in your warehouse using a data model Tapestry provides. Essentially, the data will be aggregated from both sources into one table, filtered for duplicates, and appropriately formatted to be synced to Mailchimp.
         </p>
+        <figure>
+          <img src="assets/images/architecture/57_59_datasyncing.gif" class="case-study-image">
+          <figcaption>Data syncing stack created during deployment.</figcaption>
+        </figure>
         <br/>
         <p>
           To complete the pipeline, <code class="command">kickstart</code> creates another Cloudformation stack, this time spinning up various AWS resources for your syncing tool, such as an Elastic Container Services cluster, which is used to properly run your syncing tool’s application, and another Application Load Balancer to route network traffic to your cluster.
@@ -737,11 +745,20 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <p>
           If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard. Additionally, anytime you'd like to view the dashboard, you can run the command <code class="command">tapestry start-server</code> to spin up and launch the UI. 
         </p>
+        <figure>
+          <img src="assets/images/demo/tap_ui_home_v2.png">
+        </figure>
         <br/>
         <p>  
           The dashboard contains documentation for how to use Tapestry, along with various pages for each section of your pipeline. Each page displays metrics that give you better insight into the health of each component. They also include links to the UIs of all of the tools being used at each stage of the pipeline.
         </p>
         <br/>
+        <figure>
+          <img src="assets/images/demo/tap_ui_carousel_v2.gif">
+        </figure>
+        <br/>
+        
+
         <h3>5.6 Tapestry Data Flow</h3>
         <br/>
         <p>
@@ -809,14 +826,94 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </p>
         <figure>
           <img src="assets/images/demo/MISC_teardown_v2.gif">
-          <figcaption>Setup and provisioning of data syncing stack from the command line.</figcaption>
+          <figcaption>Teardown from the command line.</figcaption>
         </figure>
-
-        <!--Section 5-->
-        <h2>6 Implementation Challenges</h2>
+        <br/>
         <!--Section 6-->
+        <h2>6 Implementation Challenges</h2>
+        <br/>
+        <h3>6.1 Ingestion Phase Challenge</h3>
+        <br/>
+        <p>
+          While prototyping the ingestion part of our pipeline, we encountered an interesting challenge. Initially, all of our Zoom data was being extracted and loaded into our warehouse without any issues, but our Salesforce data was consistently timing out. This eventually led to a 504 server error.
+        </p>
+        <br/>
+        <p>
+          In AWS, we saw that our Airbyte EC2 Instance was becoming an unhealthy target for our application load balancer everytime we attempted a sync with Salesforce. So we dug a little further and found ourselves in the AWS monitoring dashboard searching for clues. 
+        </p>
+        <figure>
+          <img src="assets/images/challenges/45_unhealthy_target.png" class="case-study-image-small">
+        </figure>
+        <br/>
+        <p>
+          There we noticed that our CPU usage was through the roof. This led us to believe that the size of our EC2 instance may be the root of the problem. So we vertically scaled our instance and our error message disappeared. This also led to our decision to include a CPU usage section in Tapestry’s dashboard to monitor our AWS resources.
+        <figure>
+          <img src="assets/images/challenges/45_aws_cpu_spike.png" class="case-study-image-small">
+        </figure>
+        <br/>
+        <h3>6.2 Storage Phase Challenge</h3>
+        <br/>
+        <p>
+          One interesting challenge we encountered when working with Snowflake was how to run SQL commands for a new user once you have their credentials. We needed to run a sequence of 34 commands in order to set up the warehouse with the necessary databases, schema, roles, and permissions for the Tapestry pipeline to operate.
+        </p>
+        <br/>
+        <figure>
+          <img src="assets/images/challenges/48_SQL_script.png">
+        </figure>
+        <p>
+          We found that Snowflake provides a Node.js SDK, which would allow us to communicate with the Snowflake warehouse. Since the SDK only allows one SQL statement to be executed at a time, we needed to store each statement as an array element, and then iterate through each one individually. 
+        </p>
+        <figure>
+          <img src="assets/images/challenges/50_snowflake_sdk_v2.png">
+        </figure>
+        <br/>
+        <p>
+          Now that we could execute each SQL statement individually, we ran into another problem because the SDK is callback-based and runs code asynchronously.
+        </p>
+        <br/>
+        <p>
+          To visualize this problem, we added a log statement with the array index, and you can see how the statements are being executed out of order  The error logs indicated that Snowflake was attempting to create databases and tables before the permission and role statements had finished executing. 
+        </p>
+        <br/>
+        <p>
+          One option for solving this might be to nest each callback so that the statements are executed in the right order. However, this would result in unreadable code that would be hard to manage. 
+        </p>
+        <br/>
+        <p>
+          Instead, we opted to use the snowflake-promise library. This is a wrapper for the Snowflake SDK that provides a promised-based API.
+        </p>
+        <br/>
+        <p>
+          This made it possible to use async/await to handle multiple promises in a synchronous fashion. Now, as you can see, the logs indicate the statements executed in the right order. 
+        </p>
+        <br/>
+        <h3>6.3 Syncing Phase Challenge</h3>
+        <br/>
+        <p>
+          One particularly interesting challenge when deploying Grouparoo was determining how to inject sensitive user inputs, like API keys or passwords, into the Docker container for Grouparoo’s web application. For Grouparoo, we needed to reference these inputs in configuration files as environmental variables.
+        </p>
+        <br/>
+        <p>
+          We soon learned that you can pass environmental variables to a container by referencing a local .env file in a Docker Compose yaml file. This solved part of the problem; the Docker container could now access any variables we provided in this file.           However, because we were not receiving the user inputs until runtime, this .env file had to be dynamically generated after these inputs were received via the CLI, but before the container could run on ECS. 
+        </p>
+        <br/>
+        <p>
+          Our solution for doing this was two-fold. First, we stored the user inputs in the SSM Parameter Store on AWS. This ensured that this sensitive information was secure and encrypted, but also available for us to access from the AWS CLI as needed. Then, we created a function to dynamically write the .env file in the user’s project folder after we had all of their inputs.
+        </p>
+        <br/>
+        <!--Section 7-->
         <h2>7 Future Work</h2>
-          <!-- Section 7 -->
+        <br/>
+        <p>
+          There are still a few features we would like to add to Tapestry in the future.
+        </p>
+        <ul>
+          <li>One thing, we’d love to do is enable cross-platform support, such as deployment on Google Cloud Platform.</li>
+          <li>We’d also like to deploy Airbyte with ECS, so that our user has greater flexibility in terms of scaling. Airbyte has indicated that this compatibility will be available sometime in the future.</li>
+          <li>Additionally, we would like to add more built-in templates to the kickstart command, so that Tapestry can be used out-of-the-box for more use cases.</li>
+          <li>And lastly, we’d like to add more advanced metrics for pipeline monitoring, such as Cloudwatch alarms that can send notifications when particular utilization thresholds are reached.</li>
+        </ul>
+          <!-- Section 8 -->
         <h2>8 References</h2>
         <!-- Section 8 -->
         <h2>9 Team</h2>
