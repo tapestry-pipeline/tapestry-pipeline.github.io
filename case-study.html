@@ -21,7 +21,7 @@
         (n.className += t + "touch");
     })(window, document);
   </script>
-  <link href="assets/images/tapestry_graphic_mono.svg" rel="shortcut icon" type="image/x-icon" />  
+  <link href="assets/images/tapestry_graphic_mono.svg" rel="shortcut icon" type="image/x-icon" />
   <link href="assets/images/tapestry_graphic_mono.svg" rel="apple-touch-icon" />
   <script src="https://kit.fontawesome.com/d019875f94.js" crossorigin="anonymous"></script>
   <meta name="image" property="og:image" content="assets/images/tapestry_logo_color.svg" />
@@ -74,25 +74,34 @@
         <h2 class="h2">1 Introduction</h2>
         <br>
         <p>
-        As the quantity and diversity of data continue to grow, user data is becoming spread across a variety of third-party services catering to the needs of specific departments within a company (e.g., marketing, customer service, finance). Unfortunately, this places data in silos, fragmenting what should be a more unified user view. 
+          As the quantity and diversity of data continue to grow, user data is becoming spread across a variety of
+          third-party services catering to the needs of specific departments within a company (e.g., marketing, customer
+          service, finance). Unfortunately, this places data in silos, fragmenting what should be a more unified user
+          view.
         </p>
         <br>
         <p>
-        With the advent of the cloud-native data warehouse has come the ability to collect data from disparate sources into one central repository and treat the warehouse as the “single source of truth”.
+          With the advent of the cloud-native data warehouse has come the ability to collect data from disparate sources
+          into one central repository and treat the warehouse as the “single source of truth”.
         </p>
         <br>
         <p>
-Data modeling and business intelligence or analytics tools built on top of the warehouse can now offer a consistent view of users. However, mapping this data back into the same third-party tools to impact day-to-day operations is still a huge challenge. In other words, there is a lag between insights and operations.
+          Data modeling and business intelligence or analytics tools built on top of the warehouse can now offer a
+          consistent view of users. However, mapping this data back into the same third-party tools to impact day-to-day
+          operations is still a huge challenge. In other words, there is a lag between insights and operations.
         </p>
         <br />
         <h3>1.1 What is Tapestry?</h3>
-        <br/>
+        <br />
         <p>
-          Tapestry is an open-source orchestration framework for the deployment of user entity data pipelines. 
+          Tapestry is an open-source orchestration framework for the deployment of user entity data pipelines.
         </p>
         <br />
         <p>
-          Tapestry allows developers to easily configure and launch an end-to-end data pipeline hosted on Amazon Web Services. With Tapestry, your user data pipeline will be automatically deployed and ready to ingest data from all your sources, store and transform that data in a warehouse, and sync it back to your tools for immediate use.
+          Tapestry allows developers to easily configure and launch an end-to-end data pipeline hosted on Amazon Web
+          Services. With Tapestry, your user data pipeline will be automatically deployed and ready to ingest data from
+          all your sources, store and transform that data in a warehouse, and sync it back to your tools for immediate
+          use.
         </p>
         <br />
         <p>
@@ -105,47 +114,63 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         <br />
         <p>
-          Rainshield is a company in the umbrella space, with a thriving e-commerce store that is quickly gaining traction amongst a larger user base. This has attracted the interest of investors, and they’ve raised funding that has allowed them to expand.   
+          Rainshield is a company in the umbrella space, with a thriving e-commerce store that is quickly gaining
+          traction amongst a larger user base. This has attracted the interest of investors, and they’ve raised funding
+          that has allowed them to expand.
         </p>
         <br />
         <p>
-          The small team that started Rainshield is no longer able to wear all hats. They are beginning to staff larger departments, such as sales, marketing, and customer support, to manage the influx of new business they’re experiencing.
+          The small team that started Rainshield is no longer able to wear all hats. They are beginning to staff larger
+          departments, such as sales, marketing, and customer support, to manage the influx of new business they’re
+          experiencing.
         </p>
         <br />
         <h3>1.3 SaaS Bloat</h3>
         <figure>
           <img src="assets/images/introduction/5_Rainshield_SaaS.png" class="case-study-image">
         </figure>
-        <br /> 
+        <br />
         <p>
-          As the business evolves, Rainshield begins to utilize various SaaS tools to engage with their user base in new ways and to meet the daily operational needs of different departments. 
+          As the business evolves, Rainshield begins to utilize various SaaS tools to engage with their user base in new
+          ways and to meet the daily operational needs of different departments.
         </p>
         <br />
         <p>
-          For example, they begin to use Stripe to handle all of their online transactions. The company’s sales team has started using Salesforce to organize and track their leads, and the Rainshield customer support team is now incorporating Zendesk to help with managing all of the support tickets that are being generated. The marketing team is even planning on hosting a Zoom webinar on a design-your-own umbrella product they are about to unveil soon!
+          For example, they begin to use Stripe to handle all of their online transactions. The company’s sales team has
+          started using Salesforce to organize and track their leads, and the Rainshield customer support team is now
+          incorporating Zendesk to help with managing all of the support tickets that are being generated. The marketing
+          team is even planning on hosting a Zoom webinar on a design-your-own umbrella product they are about to unveil
+          soon!
         </p>
         <br />
         <p>
-          Prior to this growth, user data was largely managed in the production database. However, these teams are not only requiring different views of this data to accomplish their goals but are also creating new sources of user data as they interact with customers through a variety of platforms and tools. 
+          Prior to this growth, user data was largely managed in the production database. However, these teams are not
+          only requiring different views of this data to accomplish their goals but are also creating new sources of
+          user data as they interact with customers through a variety of platforms and tools.
         </p>
         <br />
         <h3>1.4 Data Silos</h3>
         <br />
-        <p>While these third-party SaaS tools cater to the needs of each department well, user data is beginning to proliferate the organization, in terms of both the data produced and collected. Data is becoming scattered across the different tools each team is using.
+        <p>While these third-party SaaS tools cater to the needs of each department well, user data is beginning to
+          proliferate the organization, in terms of both the data produced and collected. Data is becoming scattered
+          across the different tools each team is using.
         </p>
         <figure>
           <img src="assets/images/introduction/6_data_silos_gif_alt.gif" class="case-study-image" alt="">
           <figcaption>Data captured by different tools live in data silos.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          These tools were not designed with integration in mind, and it is becoming more challenging to have a unified understanding of a single user and how they are interacting with Rainshield and its product. Each tool has access to only a portion of the customer’s information, but not the whole picture. 
+          These tools were not designed with integration in mind, and it is becoming more challenging to have a unified
+          understanding of a single user and how they are interacting with Rainshield and its product. Each tool has
+          access to only a portion of the customer’s information, but not the whole picture.
         </p>
-        <br/>
+        <br />
         <p>
-          These SaaS tools, that have increased productivity, have now become known as data silos. <strong>Data goes in, but it doesn’t come out</strong>.
+          These SaaS tools, that have increased productivity, have now become known as data silos. <strong>Data goes in,
+            but it doesn’t come out</strong>.
         </p>
-        <br/>
+        <br />
         <p>
           The industry agrees that this is a challenge:
         </p>
@@ -153,70 +178,92 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <img src="assets/images/introduction/7_colinzima.png" class="case-study-image" alt="">
         </figure>
         <h3>1.5 User Data</h3>
-        <br/>
+        <br />
         <p>
           To better understand the ramifications of data silos, let's turn back to our company Rainshield.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/introduction/8_Susy.png" class="case-study-image" alt="">
           <figcaption>A customer's data is fragmented by third-party tools.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Meet Susy, a Rainshield customer. According to her profile in Salesforce, Susy has purchased six umbrellas for her friends and family.  However, Zendesk indicated that she called two times complaining about the color of some of her umbrellas. Susy is excited about picking her own umbrella color and is signed up to attend the Zoom webinar unveiling the new design-your-own product. When this data about Susy lives in different tools, it becomes difficult to access a composite picture of Susy. 
+          Meet Susy, a Rainshield customer. According to her profile in Salesforce, Susy has purchased six umbrellas for
+          her friends and family. However, Zendesk indicated that she called two times complaining about the color of
+          some of her umbrellas. Susy is excited about picking her own umbrella color and is signed up to attend the
+          Zoom webinar unveiling the new design-your-own product. When this data about Susy lives in different tools, it
+          becomes difficult to access a composite picture of Susy.
         </p>
-        <br/> 
+        <br />
         <h3>1.6 Analyzing and Leveraging User Data</h3>
-        <br/>
+        <br />
         <p>
-          Susy's data lives in only three tools, but it's easy to imagine that Rainshield could use many more tools that capture different pieces of data for other users. They might have thousands of different customers buying their umbrellas, some of whom fit Susy’s exact profile. When data can be collected in one place, Rainshield can begin to see patterns among these users.
+          Susy's data lives in only three tools, but it's easy to imagine that Rainshield could use many more tools that
+          capture different pieces of data for other users. They might have thousands of different customers buying
+          their umbrellas, some of whom fit Susy’s exact profile. When data can be collected in one place, Rainshield
+          can begin to see patterns among these users.
         </p>
         <figure>
           <img src="assets/images/introduction/9_rainshield_users.png" class="case-study-image" alt="">
           <figcaption>Aggregating user profiles and finding patterns.</figcaption>
         </figure>
-        <br/>
-        <p> 
-          But even with this user data gathered for analysis in one place, how can these insights be used to impact day-to-day operations? 
+        <br />
+        <p>
+          But even with this user data gathered for analysis in one place, how can these insights be used to impact
+          day-to-day operations?
         </p>
         <figure>
           <img src="assets/images/introduction/10_insights_action.png" class="case-study-image" alt="">
           <figcaption>Turning insights into action.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Let’s say Rainshield would like to use what they know about Susy and other customers that match her profile in an attempt to increase sales. They believe that this group of users will be especially interested in the new umbrella colors that Rainshield just rolled out, and they would like to prompt these customers with a custom chat message via Intercom the next time they log on. But before this desired action can take place, Rainshield still needs to provide Intercom with this specific list of customers. In other words, making insights actionable still requires work. Rainshield needs to map relevant user data to Intercom in the particular format that Intercom requires. This process can be thought of as <strong>data syncing</strong>. 
+          Let’s say Rainshield would like to use what they know about Susy and other customers that match her profile in
+          an attempt to increase sales. They believe that this group of users will be especially interested in the new
+          umbrella colors that Rainshield just rolled out, and they would like to prompt these customers with a custom
+          chat message via Intercom the next time they log on. But before this desired action can take place, Rainshield
+          still needs to provide Intercom with this specific list of customers. In other words, making insights
+          actionable still requires work. Rainshield needs to map relevant user data to Intercom in the particular
+          format that Intercom requires. This process can be thought of as <strong>data syncing</strong>.
         </p>
         <br />
         <figure>
           <img src="assets/images/introduction/11_users_to_intercom.png" class="case-study-image" alt="">
           <figcaption>Syncing user data to third-party tools.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          So let’s take a step back and recap the obstacles that Rainshield and companies like it are facing. Important user data is being trapped in silos as the quantity of Rainshield’s SaaS tools increases.
+          So let’s take a step back and recap the obstacles that Rainshield and companies like it are facing. Important
+          user data is being trapped in silos as the quantity of Rainshield’s SaaS tools increases.
         </p>
-        <br/>
+        <br />
         <p>Companies would like to: </p>
         <ul>
-          <li><em>Aggregate</em> data from these disparate third-party sources into one location for better analysis.</li>
-          <li><em>Sync</em> relevant data to other third-party destinations to drive operations based on their findings.</li>
+          <li><em>Aggregate</em> data from these disparate third-party sources into one location for better analysis.
+          </li>
+          <li><em>Sync</em> relevant data to other third-party destinations to drive operations based on their findings.
+          </li>
         </ul>
-        <br/>
+        <br />
         <h3>1.7 Challenges of User Data Integration</h3>
-        <br /> 
+        <br />
         <p>
-          There are several challenges of this type of data integration. User data stored in SaaS applications is similar in structure to the data we see in traditional relational databases. However, unlike relational databases, data in SaaS applications cannot be accessed with a simple query.  Instead, this data must be retrieved via unique REST APIs, making it difficult to determine how to communicate with each tool. 
+          There are several challenges of this type of data integration. User data stored in SaaS applications is
+          similar in structure to the data we see in traditional relational databases. However, unlike relational
+          databases, data in SaaS applications cannot be accessed with a simple query. Instead, this data must be
+          retrieved via unique REST APIs, making it difficult to determine how to communicate with each tool.
         </p>
-        <br /> 
+        <br />
         <p>
-          Furthermore, factors such as limited documentation, rate limits on API requests, managing potential network errors, and ever-changing API schemas can make transporting large amounts of data a challenging and slow process.
+          Furthermore, factors such as limited documentation, rate limits on API requests, managing potential network
+          errors, and ever-changing API schemas can make transporting large amounts of data a challenging and slow
+          process.
         </p>
-        <br/>
+        <br />
         <!-- Section 2 -->
         <h2>2 Existing Solutions</h2>
-        <br/>
+        <br />
         <p>
           There are four main options for integrating data between third-party tools:
         </p>
@@ -226,83 +273,102 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <li>Create custom connectors</li>
           <li>Build a complete data pipeline</li>
         </ol>
-        <br/>
+        <br />
         <h3>2.1 Manually Move Files</h3>
-        <br/>
+        <br />
         <p>Let’s talk about the first option at Rainshield’s disposal, manually moving files between tools.
         </p>
         <figure>
           <img src="assets/images/solutions/16_csvfile_gif_sm.gif" class="case-study-image" alt="">
           <figcaption>Manually exporting CSV files.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Let’s say that Rainshield wanted to make sure that Salesforce had all of the contacts from the Zoom webinar revealing the new design-your-own umbrella. 
+          Let’s say that Rainshield wanted to make sure that Salesforce had all of the contacts from the Zoom webinar
+          revealing the new design-your-own umbrella.
         </p>
-        <br/>
+        <br />
         <p>
-          They could simply export the list of webinar attendees from Zoom to a CSV file and then import that file into Salesforce. However, this might result in duplicate data and could become tedious if you had to do this task often. 
+          They could simply export the list of webinar attendees from Zoom to a CSV file and then import that file into
+          Salesforce. However, this might result in duplicate data and could become tedious if you had to do this task
+          often.
         </p>
-        <br/>
+        <br />
         <h3>2.2 Use Pre-built Connectors</h3>
-        <br/>
+        <br />
         <p>
-          Another possibility would be to use a company that creates these connectors for you, like Zapier. After inputting some information about their Zoom and Salesforce accounts, Rainshield can choose from a menu of pre-built connectors to set up the flow of data between them. 
+          Another possibility would be to use a company that creates these connectors for you, like Zapier. After
+          inputting some information about their Zoom and Salesforce accounts, Rainshield can choose from a menu of
+          pre-built connectors to set up the flow of data between them.
         </p>
         <figure>
           <img src="assets/images/solutions/17_zapier.png" class="case-study-image">
           <figcaption>Zapier's Connectors.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          This, however, would not allow much flexibility regarding which parts of the data would be shared between the two apps. There may still be duplicate data, or the selection of apps available may not fit all use cases.
+          This, however, would not allow much flexibility regarding which parts of the data would be shared between the
+          two apps. There may still be duplicate data, or the selection of apps available may not fit all use cases.
         </p>
-        <br/>
+        <br />
         <p>
-          Another type of pre-built connection exists in some tools' settings. For example, Zoom can integrate directly with Salesforce by simply configuring your settings to export your data. This isn’t always the case though, and more than likely, Rainshield will not find connectors for every tool it uses. 
+          Another type of pre-built connection exists in some tools' settings. For example, Zoom can integrate directly
+          with Salesforce by simply configuring your settings to export your data. This isn’t always the case though,
+          and more than likely, Rainshield will not find connectors for every tool it uses.
         </p>
-        <br/>
+        <br />
         <h3>2.3 Create Custom Connectors</h3>
-        <br/>
+        <br />
         <p>
-          The third course of action is that Rainshield could designate one or two software engineers to begin building custom connections to pipe data directly into all of the tools they use. The benefit of this option is you can flexibly choose what data to send. However, these engineers would have to research these tools' APIs and write connectors not only to extract data, but also to sync data as well. 
+          The third course of action is that Rainshield could designate one or two software engineers to begin building
+          custom connections to pipe data directly into all of the tools they use. The benefit of this option is you can
+          flexibly choose what data to send. However, these engineers would have to research these tools' APIs and write
+          connectors not only to extract data, but also to sync data as well.
         </p>
-        <br/>
+        <br />
         <p>
-          This might not be too bad if the number of tools the company used was very small. For example, if Rainshield only needed to connect Zoom and Salesforce with Mailchimp, then they may only have to write a few connectors to ensure they all shared the same data. 
+          This might not be too bad if the number of tools the company used was very small. For example, if Rainshield
+          only needed to connect Zoom and Salesforce with Mailchimp, then they may only have to write a few connectors
+          to ensure they all shared the same data.
         </p>
         <figure>
           <img src="assets/images/solutions/18_threesources.png" class="case-study-image">
           <figcaption>Custom connectors with only three tools.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          However, if your company already uses several tools or plans on growing in the future, this can quickly get out of hand. And this is to say nothing of the fact that these connectors would also have to be maintained. 
+          However, if your company already uses several tools or plans on growing in the future, this can quickly get
+          out of hand. And this is to say nothing of the fact that these connectors would also have to be maintained.
         </p>
         <figure>
           <img src="assets/images/solutions/18_custom_connectors_crop.gif">
           <figcaption>Exponential growth from an increasing number of custom API connectors.</figcaption>
         </figure>
-        <br/> 
+        <br />
         <p>
-          If one API changed, every tool that connected to it would also need to be changed. And the reality is that even small companies use anywhere between 10 to 50 tools. That would require a lot of valuable engineering time.
+          If one API changed, every tool that connected to it would also need to be changed. And the reality is that
+          even small companies use anywhere between 10 to 50 tools. That would require a lot of valuable engineering
+          time.
         </p>
-        <br/>
+        <br />
         <h3>2.4 Build a Complete Data Pipeline</h3>
-        <br/>
+        <br />
         <p>
-          The best and most complete solution is our last option, implementing an end-to-end user data pipeline, with a  cloud data warehouse at the center. 
+          The best and most complete solution is our last option, implementing an end-to-end user data pipeline, with a
+          cloud data warehouse at the center.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/solutions/3_pipelineoverviewcolor.png" class="case-study-image">
           <figcaption>A complete user data pipeline.</figcaption>
         </figure>
-        <br/> 
+        <br />
         <p>
-          From an engineering perspective, this approach allows access to data ingestion and syncing tools that remove the headache of working with third-party APIs, while also providing you with the flexibility that custom connectors offer, i.e. you choose exactly what data to send. 
+          From an engineering perspective, this approach allows access to data ingestion and syncing tools that remove
+          the headache of working with third-party APIs, while also providing you with the flexibility that custom
+          connectors offer, i.e. you choose exactly what data to send.
         </p>
-        <br/>
+        <br />
         <h4>Benefits of Warehouse-Centric Pipelines</h4>
         <figure>
           <img src="assets/images/solutions/19_warehousecenter_gif.gif"">
@@ -325,64 +391,80 @@ Data modeling and business intelligence or analytics tools built on top of the w
           This warehouse-centric pipeline helps aggregate all of your data into one accessible place so you can create unified models and sync them to the tools your teams need. 
         </p>
         <figure>
-          <img src="assets/images/solutions/20_rudderstackquote.png" class="case-study-image" alt="">
+          <img src=" assets/images/solutions/20_rudderstackquote.png" class="case-study-image" alt="">
         </figure>
         <h3>2.5 Data Pipeline Solutions</h3>
-        <br/>
+        <br />
         <p>
-          When deploying this type of user data pipeline, the two primary options are to use a proprietary hosted solution, such as the one offered by the company Rudderstack, or to use open-source tools to configure your own pipeline. 
+          When deploying this type of user data pipeline, the two primary options are to use a proprietary hosted
+          solution, such as the one offered by the company Rudderstack, or to use open-source tools to configure your
+          own pipeline.
         </p>
         <figure>
           <img src="assets/images/solutions/21_rudderstack_v_selfhosted.png" class="case-study-image" alt="">
         </figure>
         <p>
-          The self-hosted option allows for the inclusion of fully open-source tools and grants you full ownership over your pipeline infrastructure. This means you can customize it any way you like. But this solution doesn’t have any out-of-the-box features and would require a substantial amount of engineering time.
+          The self-hosted option allows for the inclusion of fully open-source tools and grants you full ownership over
+          your pipeline infrastructure. This means you can customize it any way you like. But this solution doesn’t have
+          any out-of-the-box features and would require a substantial amount of engineering time.
         </p>
-        <br/> 
+        <br />
         <p>
-          Rudderstack, on the other hand, only offers open-source event streaming, and also requires you to use their infrastructure, leaving you with little control. However, they provide a ton of features and also abstract away all of the infrastructure provisioning and management, making it extremely easy to deploy a user data pipeline quickly.  
+          Rudderstack, on the other hand, only offers open-source event streaming, and also requires you to use their
+          infrastructure, leaving you with little control. However, they provide a ton of features and also abstract
+          away all of the infrastructure provisioning and management, making it extremely easy to deploy a user data
+          pipeline quickly.
         </p>
-        <br/>
+        <br />
         <h4>Challenges of Pipeline Deployment</h4>
-        <br/>
+        <br />
         <p>
-          Building your own pipeline requires an extraordinary amount of time and effort to set up, provision, and configure. 
+          Building your own pipeline requires an extraordinary amount of time and effort to set up, provision, and
+          configure.
         </p>
-        <br/>
+        <br />
         <p>
-          You need to make many different decisions about which tools to use for data ingestion and syncing and which warehouse to select,  and that’s not even mentioning all that goes into provisioning and maintaining pipeline infrastructure. To say the least, this is an extremely complex process.
+          You need to make many different decisions about which tools to use for data ingestion and syncing and which
+          warehouse to select, and that’s not even mentioning all that goes into provisioning and maintaining pipeline
+          infrastructure. To say the least, this is an extremely complex process.
         </p>
-        <br/>
+        <br />
         <h2>3 Tapestry's Solution</h2>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/solutions/23_tapestry_comparision.png" alt="">
         </figure>
-        <br/>
+        <br />
         <p>
-          Tapestry is for developers who want full control over their data infrastructure, but without having to provision that infrastructure themselves. Tapestry is a completely open-source framework that automates the entire pipeline deployment process. We do not, however, have very many out-of-the-box features.
+          Tapestry is for developers who want full control over their data infrastructure, but without having to
+          provision that infrastructure themselves. Tapestry is a completely open-source framework that automates the
+          entire pipeline deployment process. We do not, however, have very many out-of-the-box features.
         </p>
-        <br/>
+        <br />
         <p>
-          Tapestry weaves together all of the necessary resources to create an end-to-end user data pipeline, automate the setup and configuration, and let you spend your valuable time doing something more important.
+          Tapestry weaves together all of the necessary resources to create an end-to-end user data pipeline, automate
+          the setup and configuration, and let you spend your valuable time doing something more important.
         </p>
-        <br/>
+        <br />
         <h3>3.1 What Tapestry Automates</h3>
-        <br/>
+        <br />
         <p>
-          So if you are thinking about rolling your own self-hosted solution, but want to simplify the deployment process, we might be able to help.
+          So if you are thinking about rolling your own self-hosted solution, but want to simplify the deployment
+          process, we might be able to help.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/solutions/24_automation_chart.png" class="case-study-image" alt="">
         </figure>
         <p>
-          Tapestry automates many steps and creates a number of resources for each phase of the pipeline. As you can see, deploying your own user data pipeline would require at least 71 steps and the provisioning of 49 resources between AWS and the data warehouse. 
+          Tapestry automates many steps and creates a number of resources for each phase of the pipeline. As you can
+          see, deploying your own user data pipeline would require at least 71 steps and the provisioning of 49
+          resources between AWS and the data warehouse.
         </p>
-        <br/>
+        <br />
         <!-- Section 3-->
         <h2>4 Tapestry's Architecture</h2>
-        <br/>
+        <br />
         <p>
           This is what Tapestry’s pipeline looks like once deployed.
         </p>
@@ -392,7 +474,8 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         </br>
         <p>
-          Before diving into the specifics of this architecture, let’s quickly revisit the three phases of our pipeline: Ingestion, Storage & Transformation, and Syncing. 
+          Before diving into the specifics of this architecture, let’s quickly revisit the three phases of our pipeline:
+          Ingestion, Storage & Transformation, and Syncing.
         </p>
         <figure>
           <img src="assets/images/solutions/3_pipelineoverviewcolor.png" class="case-study-image">
@@ -400,244 +483,326 @@ Data modeling and business intelligence or analytics tools built on top of the w
         </figure>
         </br>
         <p>
-          The ingestion phase is where data is extracted from various sources and is loaded into a data warehouse. Once in the warehouse, this raw data is then stored and is available to manipulate or transform in any way needed. Often transformation is needed at this step so that the data can match the schema of the final destination. The last phase is syncing this data into external tools that can then perform designated actions.
+          The ingestion phase is where data is extracted from various sources and is loaded into a data warehouse. Once
+          in the warehouse, this raw data is then stored and is available to manipulate or transform in any way needed.
+          Often transformation is needed at this step so that the data can match the schema of the final destination.
+          The last phase is syncing this data into external tools that can then perform designated actions.
         </p>
-        <br/>
+        <br />
         <h3>4.1 Data Ingestion</h3>
         <figure>
           <img src="assets/images/architecture/40_pipelineoverview_ingestion_color.png" class="case-study-image">
         </figure>
-        <br/>
+        <br />
         <p>
-          An effective data extraction tool will contain and manage a library of API connectors, specific to each source. This management of connectors abstracts away the maintenance required to grab data from ever-changing API endpoints. In addition, this tool should allow for scheduling data extraction and  keeping track of global state so that only new data is pulled.
+          An effective data extraction tool will contain and manage a library of API connectors, specific to each
+          source. This management of connectors abstracts away the maintenance required to grab data from ever-changing
+          API endpoints. In addition, this tool should allow for scheduling data extraction and keeping track of global
+          state so that only new data is pulled.
         </p>
-        <br/>
+        <br />
         <h4>Flow of Data: ETL vs. ELT</h4>
-        <br/>
+        <br />
         <p>
-          In order to make a decision regarding data ingestion, it’s important to consider the path by which the data travels. 
+          In order to make a decision regarding data ingestion, it’s important to consider the path by which the data
+          travels.
         </p>
-        <br/>
+        <br />
         <p>
-          In the past, storing data was an expensive endeavor. This made it more cost-effective to perform any sort of data transformations before loading the data into a database or warehouse to reduce the amount of data being stored. This approach is known as Extract-Transform-Load, commonly referred to as ETL.
+          In the past, storing data was an expensive endeavor. This made it more cost-effective to perform any sort of
+          data transformations before loading the data into a database or warehouse to reduce the amount of data being
+          stored. This approach is known as Extract-Transform-Load, commonly referred to as ETL.
         </p>
         <figure>
           <img src="assets/images/architecture/41_ETL.png" class="case-study-image">
         </figure>
         </br>
         <p>
-          However, with the advent of cloud data warehouses, the costs of storing data have decreased dramatically. This makes it more feasible to store <em>all</em> of your user data as raw data and to perform any transformations at the warehouse level to fit a variety of analytic and operational needs. And since transformations aren’t required first, data can be loaded extremely fast. This approach is known as Extract-Load-Transform, or ELT.
+          However, with the advent of cloud data warehouses, the costs of storing data have decreased dramatically. This
+          makes it more feasible to store <em>all</em> of your user data as raw data and to perform any transformations
+          at the warehouse level to fit a variety of analytic and operational needs. And since transformations aren’t
+          required first, data can be loaded extremely fast. This approach is known as Extract-Load-Transform, or ELT.
         </p>
         <figure>
           <img src="assets/images/architecture/41_ELT.png" class="case-study-image">
         </figure>
-        <br/>
+        <br />
         <p>
           Since it was vital for our pipeline to have access to all of the raw data we chose to go with an ELT solution.
         </p>
-        <br/>
+        <br />
         <h4>Data Ingestion Tool: Airbyte</h4>
         <figure>
           <img src="assets/images/architecture/42_airbyte_card.png" class="case-study-image">
         </figure>
         <p>
-          While many data ingestion tools are available, like Fivetran, Stitch, and Meltano, we ultimately went with Airbyte. We liked that it was open-source, had standardized API connectors, a robust UI, and strong community support. 
+          While many data ingestion tools are available, like Fivetran, Stitch, and Meltano, we ultimately went with
+          Airbyte. We liked that it was open-source, had standardized API connectors, a robust UI, and strong community
+          support.
         </p>
-        <br/>
+        <br />
         <h4>Data Ingestion: How We Deploy Airbyte</h4>
-        <br/>
+        <br />
         <p>
-          Using Airbyte, we’re able to extract raw data from many third-party tools through its library of managed API wrappers, covering the E and L steps of ELT. Both the Airbyte application itself, as well as each of its connectors, all run on their own individual Docker containers. Airbyte provides the Docker image to deploy their application, and Tapestry configures the warehouse as a destination for Airbyte via a series of API calls. 
+          Using Airbyte, we’re able to extract raw data from many third-party tools through its library of managed API
+          wrappers, covering the E and L steps of ELT. Both the Airbyte application itself, as well as each of its
+          connectors, all run on their own individual Docker containers. Airbyte provides the Docker image to deploy
+          their application, and Tapestry configures the warehouse as a destination for Airbyte via a series of API
+          calls.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/architecture/43_dataingestion_dockerconnectors_v2.png">
           <figcaption>Airbyte runs as a Docker container and creates additional connectors as containers.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Essentially the main application’s container needs to be able to create new Docker containers as users set up more and more connections. Due to this necessity, Airbyte recommends the use of an AWS EC2 instance as a virtual private server for hosting.
+          Essentially the main application’s container needs to be able to create new Docker containers as users set up
+          more and more connections. Due to this necessity, Airbyte recommends the use of an AWS EC2 instance as a
+          virtual private server for hosting.
         </p>
         <figure>
           <img src="assets/images/architecture/43_dataingestion_EC2_ALB_purple.png">
-          <figcaption>Airbyte data ingestion tool, deployed on an EC2 Instance with an Application Load Balancer.</figcaption>
+          <figcaption>Airbyte data ingestion tool, deployed on an EC2 Instance with an Application Load Balancer.
+          </figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          While we might have preferred to use a container orchestration service to horizontally scale the computing resources used by each container, an EC2 instance still allows for vertical scaling of the entire instance.
+          While we might have preferred to use a container orchestration service to horizontally scale the computing
+          resources used by each container, an EC2 instance still allows for vertical scaling of the entire instance.
         </p>
-        <br/>
+        <br />
         <p>
-          Placing a load balancer in front of Airbyte means traffic cannot reach the EC2 instance directly. Network traffic must first pass through the load balancer before it’s routed to the Airbyte instance. This allows us to take advantage of additional security measures and keep the IP address of the actual instance hidden. This keeps the instance safe from any port scanning attacks and also takes advantage of AWS’s built-in protection from DDOS attacks.
+          Placing a load balancer in front of Airbyte means traffic cannot reach the EC2 instance directly. Network
+          traffic must first pass through the load balancer before it’s routed to the Airbyte instance. This allows us
+          to take advantage of additional security measures and keep the IP address of the actual instance hidden. This
+          keeps the instance safe from any port scanning attacks and also takes advantage of AWS’s built-in protection
+          from DDOS attacks.
         </p>
-        <br/>
+        <br />
         <h3>4.2 Data Storage and Transformation</h3>
-        <br/>
+        <br />
         <p>
           The next phase of a data pipeline is data storage and transformation.
         </p>
         <figure>
           <img src="assets/images/architecture/46_pipelineoverview_warehouse_color.png" class="case-study-image">
-        </figure> 
-        <br/>
+        </figure>
+        <br />
         <h4>Data Warehouse: Snowflake</h4>
-        <br/>
+        <br />
         <p>
-          We’ve already determined that at the center of our pipeline should sit a warehouse that is capable of handling large amounts of data from a variety of sources. Given our decision to host our tools on AWS services, a warehouse that could be seamlessly integrated with AWS was preferable. While there are many options for a data warehouse, such as Google BigQuery, Amazon Redshift, and Microsoft Azure, we chose Snowflake.
+          We’ve already determined that at the center of our pipeline should sit a warehouse that is capable of handling
+          large amounts of data from a variety of sources. Given our decision to host our tools on AWS services, a
+          warehouse that could be seamlessly integrated with AWS was preferable. While there are many options for a data
+          warehouse, such as Google BigQuery, Amazon Redshift, and Microsoft Azure, we chose Snowflake.
         </p>
         <figure>
           <img src="assets/images/architecture/47_snowflakecard.png" class="case-study-image">
         </figure>
-        <br/>
+        <br />
         <p>
-          Snowflake can be built on most major cloud platforms, providing valuable flexibility. It also separates storage needs from computing, also known as query processing. This allows companies to take advantage of cost savings as well as enable us to scale those two responsibilities independently. Finally, Snowflake abstracts away the provisioning and maintenance of all the necessary resources for a cloud data warehouse.
+          Snowflake can be built on most major cloud platforms, providing valuable flexibility. It also separates
+          storage needs from computing, also known as query processing. This allows companies to take advantage of cost
+          savings as well as enable us to scale those two responsibilities independently. Finally, Snowflake abstracts
+          away the provisioning and maintenance of all the necessary resources for a cloud data warehouse.
         </p>
-        <br/>
+        <br />
         <h4>Data Storage: Using a Storage Bucket</h4>
         <p>
-          Initially, we attempted to load data directly into Snowflake from third party tools, but we found the data transfer to be particularly slow. This led us to investigate using a staging area with Snowflake and how this impacts data loading.         </p>
+          Initially, we attempted to load data directly into Snowflake from third party tools, but we found the data
+          transfer to be particularly slow. This led us to investigate using a staging area with Snowflake and how this
+          impacts data loading. </p>
         </p>
         <figure>
           <img src="assets/images/architecture/48_stagingbucket_purple2.png">
           <figcaption>Tapestry's data storage with a staging bucket.</figcaption>
         </figure>
         <p>
-          Without this staging area, Airbyte can only insert one row of data at a time into Snowflake, requiring numerous SQL INSERT commands to copy over an entire table. With the addition of a staging area, Airbyte can achieve efficient bulk data loading. 
+          Without this staging area, Airbyte can only insert one row of data at a time into Snowflake, requiring
+          numerous SQL INSERT commands to copy over an entire table. With the addition of a staging area, Airbyte can
+          achieve efficient bulk data loading.
         </p>
-        <br/>
+        <br />
         <p>
-          To implement this staging area, we provision an Amazon S3 staging bucket between our Airbyte instance and our Snowflake data warehouse.
+          To implement this staging area, we provision an Amazon S3 staging bucket between our Airbyte instance and our
+          Snowflake data warehouse.
         </p>
-        <br/>
+        <br />
         <h4>Data Transformation Tool: DBT</h4>
         <figure>
           <img src="assets/images/architecture/52_dbt_card.png" class="case-study-image">
         </figure>
         <p>
-          A data transformation tool should be flexible so you can transform data to meet a variety of analytical and operational needs. 
+          A data transformation tool should be flexible so you can transform data to meet a variety of analytical and
+          operational needs.
         </p>
-        <br/>
+        <br />
         <p>
-          Ideally, we would like a SQL-based data transformation tool that could be utilized by non-developers to create data models based on the warehouse and put that data into action more quickly. 
+          Ideally, we would like a SQL-based data transformation tool that could be utilized by non-developers to create
+          data models based on the warehouse and put that data into action more quickly.
         </p>
-        <br/>
+        <br />
         <p>
-          Finally, we would like a tool that maintains a history of our data transformations. Documentation about existing data models and how these models relate to each other can provide better context for how data has been manipulated over time.
+          Finally, we would like a tool that maintains a history of our data transformations. Documentation about
+          existing data models and how these models relate to each other can provide better context for how data has
+          been manipulated over time.
         </p>
-        <br/>
+        <br />
         <p>
-          When considering these requirements for a transformation tool, one option stood out because it encompassed all features we wanted and was free and open-source. That tool was DBT, or Data Build Tool. We opted to go with the cloud version of DBT because of its ease of use and simple to understand UI.
+          When considering these requirements for a transformation tool, one option stood out because it encompassed all
+          features we wanted and was free and open-source. That tool was DBT, or Data Build Tool. We opted to go with
+          the cloud version of DBT because of its ease of use and simple to understand UI.
         </p>
-        <br/>
+        <br />
         <h4>Data Transformation: How We Use DBT</h4>
         <figure>
           <img src="assets/images/architecture/53_warehousearchitecturev3.png" class="case-study-image-small">
           <figcaption>Data aggregation with DBT.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          In particular, Tapestry uses DBT to aggregate data and handle duplicate entries. Other transformations you might want to perform include changing column names or copying only the particular fields you need from one table into a new table.
+          In particular, Tapestry uses DBT to aggregate data and handle duplicate entries. Other transformations you
+          might want to perform include changing column names or copying only the particular fields you need from one
+          table into a new table.
         </p>
-        <br/>
+        <br />
         <p>
-          Because DBT has its own cloud version, Tapestry doesn’t need to provision any resources for it. 
+          Because DBT has its own cloud version, Tapestry doesn’t need to provision any resources for it.
         </p>
-        <br/>
+        <br />
         <h3>4.3 Data Syncing</h3>
         <figure>
           <img src="assets/images/architecture/54_pipelineoverview_syncing_color.png" class="case-study-image">
         </figure>
-        <br/>
+        <br />
         <p>
           The syncing phase is where we send data back into external tools that can then act on the data.
         </p>
-        <br/>
+        <br />
         <p>
-          Much like data ingestion, this requires a library of API connectors, specific to each destination, and the ability to schedule when you want to transfer your data. However, data syncing is more challenging than ingestion in that the data must conform to the destination’s schema. 
+          Much like data ingestion, this requires a library of API connectors, specific to each destination, and the
+          ability to schedule when you want to transfer your data. However, data syncing is more challenging than
+          ingestion in that the data must conform to the destination’s schema.
         </p>
-        <br/>
+        <br />
         <p>
-          This concept of syncing data back into your tools is relatively new and has recently been coined  <strong>reverse ETL</strong>. If you recall, ETL and ELT are concerned with moving data from your tools into your warehouse, and reverse ETL moves data out of your warehouse and into your business’s operational tools. This term, however, while becoming quite common, does not describe the process well, which is why we prefer the term “data syncing.” 
+          This concept of syncing data back into your tools is relatively new and has recently been coined
+          <strong>reverse ETL</strong>. If you recall, ETL and ELT are concerned with moving data from your tools into
+          your warehouse, and reverse ETL moves data out of your warehouse and into your business’s operational tools.
+          This term, however, while becoming quite common, does not describe the process well, which is why we prefer
+          the term “data syncing.”
         </p>
-        <br/>
+        <br />
         <h4>Data Syncing Tool: Grouparoo</h4>
         <figure>
           <img src="assets/images/architecture/55_grouparoo_card.png" class="case-study-image">
         </figure>
         <p>
-          While proprietary tools exist in the data syncing space, like Census and Hightouch,  we opted to find one that was open-source. 
+          While proprietary tools exist in the data syncing space, like Census and Hightouch, we opted to find one that
+          was open-source.
         </p>
-        <br/>
+        <br />
         <p>
-          We ultimately went with Grouparoo. It allows us to schedule data syncing into external tools and validate that the data conforms to the destination schema.
+          We ultimately went with Grouparoo. It allows us to schedule data syncing into external tools and validate that
+          the data conforms to the destination schema.
         </p>
-        <br/>
+        <br />
         <h4>Data Syncing: How we Deploy Grouparoo</h4>
-        <br/>
+        <br />
         <p>
-          Grouparoo recommends deploying their web application stack with an application layer  and a data layer. 
+          Grouparoo recommends deploying their web application stack with an application layer and a data layer.
         </p>
         <figure>
           <img src="assets/images/architecture/56_grouparoo_recommended_arch.png" class="case-study-image-small">
           <figcaption>Grouparoo's recommended deployment strategy.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          The application layer is where a worker server and web server will reside. When a request to sync data up with external sources comes in, it first hits a load balancer which directs the request to the web server. From there, the web server can then off-load the task to the worker server if the task will take a long time to complete. When these slower jobs are run in the background, it improves the responsiveness of the web server.
+          The application layer is where a worker server and web server will reside. When a request to sync data up with
+          external sources comes in, it first hits a load balancer which directs the request to the web server. From
+          there, the web server can then off-load the task to the worker server if the task will take a long time to
+          complete. When these slower jobs are run in the background, it improves the responsiveness of the web server.
         </p>
-        <br/>
+        <br />
         <p>
-          The data layer houses the application database as well as the cache. Grouparoo recommends using Redis to serve as both the cache and also as the background-job queue for the worker server. They also suggest using Postgres as the database where your user data will be stored.
+          The data layer houses the application database as well as the cache. Grouparoo recommends using Redis to serve
+          as both the cache and also as the background-job queue for the worker server. They also suggest using Postgres
+          as the database where your user data will be stored.
         </p>
-        <br/>
+        <br />
         <p>
-          This architecture informed how Tapestry chose to deploy Grouparoo to the cloud. Given the distributed nature of this architecture, we thought it was appropriate to deploy each component as its own Docker container.
+          This architecture informed how Tapestry chose to deploy Grouparoo to the cloud. Given the distributed nature
+          of this architecture, we thought it was appropriate to deploy each component as its own Docker container.
         </p>
         <figure>
           <img src="assets/images/architecture/57_datasyncing_docker.png">
           <figcaption>Multi-container Docker deployment.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          This way each container would have only one concern, and the decoupling of responsibilities would make it easier to horizontally scale in the future. First, Tapestry provides a generic Redis and Postgres Docker image to run the containers for the data layer. Then, Grouparoo provides a Docker image that can be used for deploying the web and worker service. Starting with their base image, we add the necessary configuration to integrate Snowflake as the data warehouse for Grouparoo to use as its primary data source. 
+          This way each container would have only one concern, and the decoupling of responsibilities would make it
+          easier to horizontally scale in the future. First, Tapestry provides a generic Redis and Postgres Docker image
+          to run the containers for the data layer. Then, Grouparoo provides a Docker image that can be used for
+          deploying the web and worker service. Starting with their base image, we add the necessary configuration to
+          integrate Snowflake as the data warehouse for Grouparoo to use as its primary data source.
         </p>
-        <br/>
+        <br />
         <p>
-          Of note, Grouparoo uses Javascript or JSON files to store configuration details.  Because of this, any configuration changes require the Grouparoo Docker image to be rebuilt. So we chose to push the image we provide to a repository on AWS’s Elastic Container Registry, giving the user easy and private access for any future updates.  
+          Of note, Grouparoo uses Javascript or JSON files to store configuration details. Because of this, any
+          configuration changes require the Grouparoo Docker image to be rebuilt. So we chose to push the image we
+          provide to a repository on AWS’s Elastic Container Registry, giving the user easy and private access for any
+          future updates.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/architecture/57_datasyncing_ECR_blue.png">
           <figcaption>Docker images for web and worker servers stored in Elastic Container Registry.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Because this is a multi-container deployment, Tapestry had to consider how best to handle container orchestration. Some popular options for container orchestration include Kubernetes, Docker Swarm, and Amazon Elastic Container Service, or ECS. Kubernetes and Docker Swarm are both highly configurable; however, the learning curve is steep. So we decided to use ECS to handle container orchestration for Tapestry’s Grouparoo deployment because it manages and scales containers efficiently and automatically. This choice also gave us the ability to use the recently rolled-out ECS and Docker Compose integration, which simplified this process even more.
+          Because this is a multi-container deployment, Tapestry had to consider how best to handle container
+          orchestration. Some popular options for container orchestration include Kubernetes, Docker Swarm, and Amazon
+          Elastic Container Service, or ECS. Kubernetes and Docker Swarm are both highly configurable; however, the
+          learning curve is steep. So we decided to use ECS to handle container orchestration for Tapestry’s Grouparoo
+          deployment because it manages and scales containers efficiently and automatically. This choice also gave us
+          the ability to use the recently rolled-out ECS and Docker Compose integration, which simplified this process
+          even more.
         </p>
         <figure>
           <img src="assets/images/architecture/58_docker_ecs.png" class="case-study-image">
           <figcaption>Using Docker Compose and Elastic Container Service integration.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-           Docker Compose is a tool that allows developers to define and run multi-container applications via a YAML file. With this integration, we could seamlessly use this same docker-compose file to deploy the Grouparoo application and all its dependencies as an ECS cluster. AWS resources are created automatically based on the specifications in this file. This works because there are built-in mappings between the Docker containers defined in the file and ECS tasks. 
+          Docker Compose is a tool that allows developers to define and run multi-container applications via a YAML
+          file. With this integration, we could seamlessly use this same docker-compose file to deploy the Grouparoo
+          application and all its dependencies as an ECS cluster. AWS resources are created automatically based on the
+          specifications in this file. This works because there are built-in mappings between the Docker containers
+          defined in the file and ECS tasks.
         </p>
-        <br/>
+        <br />
         <p>
-          ECS not only manages these containers, but the servers they live on as well. This occurs via AWS Fargate, a service that abstracts away server provisioning and handles it entirely on the user’s behalf. We also placed a load balancer in front of the ECS cluster for all of the same security reasons we placed one in front of our ingestion tool. Additionally, since we use a load balancer, we are also set up nicely to horizontally scale in the future if needed. 
+          ECS not only manages these containers, but the servers they live on as well. This occurs via AWS Fargate, a
+          service that abstracts away server provisioning and handles it entirely on the user’s behalf. We also placed a
+          load balancer in front of the ECS cluster for all of the same security reasons we placed one in front of our
+          ingestion tool. Additionally, since we use a load balancer, we are also set up nicely to horizontally scale in
+          the future if needed.
         </p>
         <figure>
           <img src="assets/images/architecture/59_datasyncing_fullv3.jpg" alt="">
-          <figcaption>Grouparoo deployed with ECS and Fargate, with the addition of an Application Load Balancer.</figcaption>
+          <figcaption>Grouparoo deployed with ECS and Fargate, with the addition of an Application Load Balancer.
+          </figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Once Grouparoo is deployed, you are ready to start pulling data from your warehouse, and syncing it into other third party tools, like Mailchimp.
+          Once Grouparoo is deployed, you are ready to start pulling data from your warehouse, and syncing it into other
+          third party tools, like Mailchimp.
         </p>
-        <br/>
+        <br />
         <!--Section 5-->
         <h2>5 Using Tapestry</h2>
-        <br/>
+        <br />
         <h3>5.1 Prerequisites & Installing Tapestry</h3>
         <p>
           Getting started with Tapestry is pretty simple. You will need the following:
@@ -647,21 +812,25 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <li>An AWS account and AWS CLI</li>
           <li>Docker</li>
         </ul>
-        <br/>
+        <br />
         <p>
-          If you were the developer, you would first need Node and NPM installed since Tapestry is a Node package. Since Tapestry provisions several AWS resources, you are required to have an AWS account and the AWS Command Line Interface configured on your machine. Finally, you will need to have a Docker account and have it installed on your machine.
+          If you were the developer, you would first need Node and NPM installed since Tapestry is a Node package. Since
+          Tapestry provisions several AWS resources, you are required to have an AWS account and the AWS Command Line
+          Interface configured on your machine. Finally, you will need to have a Docker account and have it installed on
+          your machine.
         </p>
-        <br/>
+        <br />
         <p>
-          After these preliminary steps, all you would need to do to get started is run <code class="command">npm i -g tapestry-pipeline</code>, and a host of commands will be provided to you.
+          After these preliminary steps, all you would need to do to get started is run <code
+            class="command">npm i -g tapestry-pipeline</code>, and a host of commands will be provided to you.
         </p>
-        <br/>
+        <br />
         <h3>5.2 Tapestry Commands</h3>
         <figure>
           <img src="assets/images/demo/26_commandlist_v2.png">
           <figcaption>Tapestry's list of commands.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
           As a new user, the first Tapestry command you would run is <code class="command">tapestry init</code>.
         </p>
@@ -669,187 +838,241 @@ Data modeling and business intelligence or analytics tools built on top of the w
           <img src="assets/images/demo/27_tapestry_init_computer.png" class="case-study-image-small">
           <figcaption>Tapestry provides a CloudFormation template during the init command.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          With <code class="command">tapestry init</code>, you give your project a name, and Tapestry will provision a project folder along with an AWS CloudFormation template. This template allows you to provision and configure AWS resources with code. In particular, this template is used to provision resources for the data ingestion phase of the pipeline. What Tapestry provides for the syncing phase of your pipeline is dependent upon which command you run next.
+          With <code class="command">tapestry init</code>, you give your project a name, and Tapestry will provision a
+          project folder along with an AWS CloudFormation template. This template allows you to provision and configure
+          AWS resources with code. In particular, this template is used to provision resources for the data ingestion
+          phase of the pipeline. What Tapestry provides for the syncing phase of your pipeline is dependent upon which
+          command you run next.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/demo/27_init_v2.gif">
           <figcaption>Running <em>tapestry init</em> from the command line.</figcaption>
         </figure>
         <h3>5.3 Deploy vs. Kickstart Commands</h3>
-        <br/>
+        <br />
         <p>
-          Next, you have a choice between the <code class="command">tapestry deploy</code> or <code class="command">tapestry kickstart</code> commands. Once you make your selection, Tapestry provides all the necessary configuration files for the data syncing phase. 
+          Next, you have a choice between the <code class="command">tapestry deploy</code> or <code
+            class="command">tapestry kickstart</code> commands. Once you make your selection, Tapestry provides all the
+          necessary configuration files for the data syncing phase.
         </p>
         <figure>
           <img src="assets/images/demo/28_deploy_v_kickstart.png" class="case-study-image">
         </figure>
-        <br/>
+        <br />
         <p>
-          Both commands automate the deployment of a fully operational pipeline, but <code class="command">kickstart</code> includes two pre-configured sources,  Zoom and Salesforce, along with one destination, Mailchimp. These pre-configured third-party tools set up your pipeline to have immediate end-to-end data flow, beginning with data ingestion and ending with data syncing into these tools. Regardless of which command you choose, note that a Snowflake account is required for <em>both</em> <code class="command">deploy</code> and <code class="command">kickstart</code>.
+          Both commands automate the deployment of a fully operational pipeline, but <code
+            class="command">kickstart</code> includes two pre-configured sources, Zoom and Salesforce, along with one
+          destination, Mailchimp. These pre-configured third-party tools set up your pipeline to have immediate
+          end-to-end data flow, beginning with data ingestion and ending with data syncing into these tools. Regardless
+          of which command you choose, note that a Snowflake account is required for <em>both</em> <code
+            class="command">deploy</code> and <code class="command">kickstart</code>.
         </p>
-        <br/>
+        <br />
         <h3>5.4 End-to-End Demo</h3>
-        <br/>
+        <br />
         <p>
-          To better show the full flow of data through a Tapestry pipeline, this section will walk through our <code class="command">tapestry kickstart</code> command. 
+          To better show the full flow of data through a Tapestry pipeline, this section will walk through our <code
+            class="command">tapestry kickstart</code> command.
         </p>
         <figure>
           <img src="assets/images/demo/29_tapestry_kickstart_computer.png" class="case-study-image-small">
         </figure>
-        <br/>
+        <br />
         <p>
-          Prior to execution, you will have to own or create accounts with Zoom, Salesforce, and Mailchimp. <code class="command">kickstart</code> then begins by prompting you with a short series of questions about the previously mentioned accounts, as well as Snowflake, Tapestry’s data warehouse of choice.
+          Prior to execution, you will have to own or create accounts with Zoom, Salesforce, and Mailchimp. <code
+            class="command">kickstart</code> then begins by prompting you with a short series of questions about the
+          previously mentioned accounts, as well as Snowflake, Tapestry’s data warehouse of choice.
         </p>
         <figure>
           <img src="assets/images/demo/29_kickstart_questions_stars.gif">
           <figcaption>Kickstart command prompts user for inputs.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          After your information has been collected, <code class="command">kickstart</code> continues by creating the necessary databases and tables within your data warehouse to be utilized by both your ingestion and syncing tools. 
+          After your information has been collected, <code class="command">kickstart</code> continues by creating the
+          necessary databases and tables within your data warehouse to be utilized by both your ingestion and syncing
+          tools.
         </p>
-        <br/>
+        <br />
         <p>
-          Let’s quickly review the infrastructure that this command is provisioning. 
+          Let’s quickly review the infrastructure that this command is provisioning.
         </p>
         <figure>
           <img src="assets/images/architecture/43_data_ingestion.gif" class="case-study-image">
           <figcaption>Data ingestion stack created during deployment.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Tapestry uses the CloudFormation template supplied during the <code class="command">init</code> command to create a CloudFormation stack, provisioning AWS resources specifically related to your ingestion tool, Airbyte. These resources include an S3 staging bucket, an EC2 instance for Airbyte to run on, and an Application Load Balancer to route traffic to our EC2 instance. Airbyte is then configured to extract certain data from your Zoom and Salesforce accounts and send it over to your warehouse.
+          Tapestry uses the CloudFormation template supplied during the <code class="command">init</code> command to
+          create a CloudFormation stack, provisioning AWS resources specifically related to your ingestion tool,
+          Airbyte. These resources include an S3 staging bucket, an EC2 instance for Airbyte to run on, and an
+          Application Load Balancer to route traffic to our EC2 instance. Airbyte is then configured to extract certain
+          data from your Zoom and Salesforce accounts and send it over to your warehouse.
         </p>
         <figure>
           <img src="assets/images/demo/MISC_kickstart_airbyte_v2.gif">
           <figcaption>Setup and provisioning of data ingestion stack from the command line.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          You will then be asked to carry out a few steps so the data is transformed in your warehouse using the data model Tapestry provides for DBT. The raw data will be aggregated from both sources into one transformed table, filtered for duplicates, and appropriately formatted to be synced to Mailchimp.
+          You will then be asked to carry out a few steps so the data is transformed in your warehouse using the data
+          model Tapestry provides for DBT. The raw data will be aggregated from both sources into one transformed table,
+          filtered for duplicates, and appropriately formatted to be synced to Mailchimp.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/demo/dbt-run.PNG" class="case-study-image">
           <figcaption>A successful DBT run, transforming data in the warehouse.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          To complete the pipeline, <code class="command">kickstart</code> creates another CloudFormation stack, this time spinning up various AWS resources for your syncing tool, Grouparoo.
+          To complete the pipeline, <code class="command">kickstart</code> creates another CloudFormation stack, this
+          time spinning up various AWS resources for your syncing tool, Grouparoo.
         </p>
         <figure>
           <img src="assets/images/architecture/57_59_datasyncing.gif" class="large-image">
           <figcaption>Data syncing stack created during deployment.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          These resources include an Elastic Container Services cluster to run your Grouparoo application, an Elastic Container Registry repository with your Grouparoo Docker image stored, and another Application Load Balancer to route network traffic to your cluster.
+          These resources include an Elastic Container Services cluster to run your Grouparoo application, an Elastic
+          Container Registry repository with your Grouparoo Docker image stored, and another Application Load Balancer
+          to route network traffic to your cluster.
         </p>
         <figure>
           <img src="assets/images/demo/MISC_kickstart_grouparoo_v2.gif">
           <figcaption>Setup and provisioning of data syncing stack from the command line.</figcaption>
         </figure>
-        <br/>
+        <br />
         <h3>5.5 Tapestry Dashboard</h3>
-        <br/>
+        <br />
         <p>
-          If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard. Additionally, anytime you'd like to view the dashboard, you can run the command <code class="command">tapestry start-server</code> to spin up and launch the UI at http://localhost:7777. 
+          If you are deploying a new pipeline, Tapestry automatically launches your very own local Tapestry Dashboard.
+          Additionally, anytime you'd like to view the dashboard, you can run the command <code
+            class="command">tapestry start-server</code> to spin up and launch the UI at http://localhost:7777.
         </p>
         <figure>
           <img src="assets/images/demo/tap_ui_home_v2.png">
         </figure>
-        <br/>
-        <p>  
-          The dashboard contains documentation for how to use Tapestry, along with various pages for each section of your pipeline. Each page displays metrics that give you better insight into the health of each component. They also include links to the UIs for all your date pipeline tools: Airbyte, Snowflake, DBT, and Grouparoo.
+        <br />
+        <p>
+          The dashboard contains documentation for how to use Tapestry, along with various pages for each section of
+          your pipeline. Each page displays metrics that give you better insight into the health of each component. They
+          also include links to the UIs for all your date pipeline tools: Airbyte, Snowflake, DBT, and Grouparoo.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/demo/tap_ui_carousel_v2.gif">
         </figure>
-        <br/>
+        <br />
         <p>Some important metrics we track on the dashboard include:</p>
         <ul>
           <li>Number of data ingestion sources currently operational</li>
           <li>Number of data syncing destinations currently operational</li>
           <li>EC2 instance status</li>
-          <li>ECS cluster status</li> 
+          <li>ECS cluster status</li>
           <li>CPU utilization</li>
           <li>List of source tables in the data warehouse</li>
-          <li>List of transformed tables created in the data warehouse</li> 
+          <li>List of transformed tables created in the data warehouse</li>
           <li>Logs for each tool for increased observability</li>
         </ul>
-        <br/>
+        <br />
         <h3>5.6 Tapestry Data Flow</h3>
-        <br/>
+        <br />
         <p>
-          Now let’s actually see data flow through the entire pipeline with an example using the <code class="command">tapestry kickstart</code> command.
+          Now let’s actually see data flow through the entire pipeline with an example using the <code
+            class="command">tapestry kickstart</code> command.
         </p>
         <figure>
           <img src="assets/images/demo/32_data_flow.png" class="case-study-image">
           <figcaption>Flow of data with kickstart command.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Our goal in this example is to extract data from both Zoom and Salesforce and push it to our data warehouse, Snowflake. From there, we want to combine a list of webinar registrants from Zoom and Salesforce contacts into one single table, and filter out any duplicates along the way. Finally, we want to send this complete set of data over to Mailchimp. 
+          Our goal in this example is to extract data from both Zoom and Salesforce and push it to our data warehouse,
+          Snowflake. From there, we want to combine a list of webinar registrants from Zoom and Salesforce contacts into
+          one single table, and filter out any duplicates along the way. Finally, we want to send this complete set of
+          data over to Mailchimp.
         </p>
-        <br/>
+        <br />
         <h4>Zoom Data</h4>
         <figure>
           <img src="assets/images/demo/33_zoom_source.png" class="case-study-image-small">
           <figcaption>Source data from Zoom.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          As you can see from this table, we have several different people who have registered for a Zoom webinar. Of particular note are Diana Prince, Barry Allen, and Betty Rubble. As indicated in blue, Betty Rubble is a unique contact only found in Zoom, while the purple around Diana and Barry indicates that they are contacts found in both Zoom and Salesforce. Our goal is to get all three of these entries over to Mailchimp, with only one entry each for Diana and Barry.
+          As you can see from this table, we have several different people who have registered for a Zoom webinar. Of
+          particular note are Diana Prince, Barry Allen, and Betty Rubble. As indicated in blue, Betty Rubble is a
+          unique contact only found in Zoom, while the purple around Diana and Barry indicates that they are contacts
+          found in both Zoom and Salesforce. Our goal is to get all three of these entries over to Mailchimp, with only
+          one entry each for Diana and Barry.
         </p>
-        <br/>
+        <br />
         <h4>Salesforce Data</h4>
         <figure>
           <img src="assets/images/demo/34_salesforce_source.png" class="large-image">
           <figcaption>Source data from Salesforce.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Now in Salesforce, we have a different list of customers. In yellow, there is a contact who is unique to Salesforce, Jack Rogers, while Diana and Bartholomew, a.k.a. "Barry" are in purple again, as seen in the Zoom list. 
+          Now in Salesforce, we have a different list of customers. In yellow, there is a contact who is unique to
+          Salesforce, Jack Rogers, while Diana and Bartholomew, a.k.a. "Barry" are in purple again, as seen in the Zoom
+          list.
         </p>
-        <br/>
+        <br />
         <p>
-          Even though Barry is going by a different first name in Salesforce, his email is the same across both sources, allowing us to uniquely identify him. This means that when we combine the two lists, we can use the email address field as a unique key to eliminate record duplication.
+          Even though Barry is going by a different first name in Salesforce, his email is the same across both sources,
+          allowing us to uniquely identify him. This means that when we combine the two lists, we can use the email
+          address field as a unique key to eliminate record duplication.
         </p>
-        <br/>
+        <br />
         <h4>Snowflake Warehouse</h4>
         <figure>
           <img src="assets/images/demo/35_snowflake_warehouse.png">
           <figcaption>Source data and transformed data in the warehouse.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Once the data from both Zoom and Salesforce have made it into our Snowflake warehouse, we can transform the data by combining both lists, and removing duplicate entries. You can see the two tables highlighted in purple. The TAPESTRY_WEBINAR_REGISTRANTS table has all of our Zoom data, and the TAPESTRY_CONTACT table has all of our Salesforce data. The EMAIL_MODEL table that is highlighted in blue is the newly transformed table that we will sync to our Mailchimp account.
+          Once the data from both Zoom and Salesforce have made it into our Snowflake warehouse, we can transform the
+          data by combining both lists, and removing duplicate entries. You can see the two tables highlighted in
+          purple. The TAPESTRY_WEBINAR_REGISTRANTS table has all of our Zoom data, and the TAPESTRY_CONTACT table has
+          all of our Salesforce data. The EMAIL_MODEL table that is highlighted in blue is the newly transformed table
+          that we will sync to our Mailchimp account.
         </p>
-        <br/>
+        <br />
         <h4>Mailchimp</h4>
         <figure>
           <img src="assets/images/demo/36_mailchimpdestination.png" class="large-image">
           <figcaption>Synced data in Mailchimp destination.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Finally, here in Mailchimp, we see that we’ve successfully synced all of our Zoom webinar registrants and Salesforce contacts, and made sure that there is only one entry for Barry and Diana. You can also see that our unique users, Betty and Jack made it over as well.
+          Finally, here in Mailchimp, we see that we’ve successfully synced all of our Zoom webinar registrants and
+          Salesforce contacts, and made sure that there is only one entry for Barry and Diana. You can also see that our
+          unique users, Betty and Jack made it over as well.
         </p>
-        <br/>
+        <br />
         <h3>5.7 Maintenance & Management</h3>
-        <br/>
+        <br />
         <h4>Rebuild Command</h4>
-        <br/>
+        <br />
         <p>
-          Tapestry also supplies users with a <code class="command">tapestry rebuild</code> command that is specific to the syncing side of the pipeline. While most updates to Airbyte can be done right in their UI, Grouparoo’s dashboard is mainly for application visibility and observability. In order to add, remove, or update any sources or destinations, changes need to be made to the configuration files in your local Grouparoo directory. 
+          Tapestry also supplies users with a <code class="command">tapestry rebuild</code> command that is specific to
+          the syncing side of the pipeline. While most updates to Airbyte can be done right in their UI, Grouparoo’s
+          dashboard is mainly for application visibility and observability. In order to add, remove, or update any
+          sources or destinations, changes need to be made to the configuration files in your local Grouparoo directory.
         </p>
-        <br/>
+        <br />
         <p>
-          Once these changes are finalized locally, the image must be rebuilt, pushed to a private repository in the Elastic Container Registry, and the Grouparoo CloudFormation stack must be updated. All of these steps are what Tapestry’s <code class="command">rebuild</code> command automates. The user simply makes the changes themselves to the configuration files and then runs <code class="command">tapestry rebuild</code>. Tapestry handles the rest.
+          Once these changes are finalized locally, the image must be rebuilt, pushed to a private repository in the
+          Elastic Container Registry, and the Grouparoo CloudFormation stack must be updated. All of these steps are
+          what Tapestry’s <code class="command">rebuild</code> command automates. The user simply makes the changes
+          themselves to the configuration files and then runs <code class="command">tapestry rebuild</code>. Tapestry
+          handles the rest.
         </p>
         <figure>
           <img src="assets/images/demo/ECR_only.png" class="case-study-image-small">
@@ -859,116 +1082,167 @@ Data modeling and business intelligence or analytics tools built on top of the w
         <h4>Teardown Command</h4>
         <br>
         <p>
-          If the user, for whatever reason, decides they are no longer in need of Tapestry’s data pipeline, Tapestry provides <code class="command">tapestry teardown</code> to terminate and remove most of the AWS resources provisioned during deployment, as well as the Airbyte and Grouparoo applications that ran on those resources. 
+          If the user, for whatever reason, decides they are no longer in need of Tapestry’s data pipeline, Tapestry
+          provides <code class="command">tapestry teardown</code> to terminate and remove most of the AWS resources
+          provisioned during deployment, as well as the Airbyte and Grouparoo applications that ran on those resources.
         </p>
-        <br/>
+        <br />
         <p>
-          We say “most” AWS resources because we do not destroy your S3 bucket, nor do we destory any parameters in your SSM Parameter Store. Tapestry uses the Parameter Store to store user inputs, such as API keys and various account credentials. These resources remain intact so that you can retain access to this data even after your pipeline has been torn down.
+          We say “most” AWS resources because we do not destroy your S3 bucket, nor do we destory any parameters in your
+          SSM Parameter Store. Tapestry uses the Parameter Store to store user inputs, such as API keys and various
+          account credentials. These resources remain intact so that you can retain access to this data even after your
+          pipeline has been torn down.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/demo/MISC_teardown_v2.gif">
           <figcaption>Running <em>tapestry teardown</em> from the command line.</figcaption>
         </figure>
-        <br/>
+        <br />
         <!--Section 6-->
         <h2>6 Implementation Challenges</h2>
-        <br/>
-        <h3>6.1 Ingestion Phase Challenge</h3>
-        <br/>
+        <br />
+        <h3>6.1 Ingestion Phase Challenges</h3>
+        <br />
+        <h4>Scaling the EC2 Instance</h4>
+        <br />
         <p>
-          While prototyping the ingestion part of our pipeline, we encountered an interesting challenge. Initially, all of our Zoom data was being extracted and loaded into our warehouse without any issues, but our Salesforce data was consistently timing out. This eventually led to a 504 server error.
-        </p>
-        <br/>
-        <p>
-          In AWS, we saw that our Airbyte EC2 Instance was becoming an unhealthy target for our application load balancer everytime we attempted a sync with Salesforce. So we dug a little further and found ourselves in the AWS monitoring dashboard searching for clues. 
+          While prototyping the ingestion part of the pipeline, we encountered an interesting challenge. Initially, all
+          of the Zoom data was being extracted and loaded into the data warehouse without any issues, but the Salesforce
+          data
+          was consistently timing out. This eventually led to a 504 server error.
         </p>
         <figure>
-          <img src="assets/images/challenges/45_unhealthy_target.png" class="case-study-image-small">
+          <img src="assets/images/challenges/badgateway.png">
+          <figcaption>504 bad gateway error on Airbyte.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          There we noticed that our CPU usage was through the roof. This led us to believe that the size of our EC2 instance may be the root of the problem. So we vertically scaled our instance and our error message disappeared. This also led to our decision to include a CPU usage section in Tapestry’s dashboard to monitor our AWS resources.
+          In AWS, we saw that the Airbyte EC2 Instance was becoming an unhealthy target for the Application Load
+          Balancer every time we attempted to sync with Salesforce.
+        </p>
         <figure>
-          <img src="assets/images/challenges/45_aws_cpu_spike.png" class="case-study-image-small">
+          <img src="assets/images/challenges/45_unhealthy_target.png" class="case-study-image">
+          <figcaption>Unhealthy target for ALB on AWS console.</figcaption>
         </figure>
-        <br/>
+        <br />
+        <p>
+          After further investigation, we found that the EC2 instance had alarmingly high CPU usage. Our solution was to
+          vertically scale this EC2 instance to increase its computing power. As we discussed
+          in our architecture section, we were limited to deploying Airbye on a single EC2 instance, making it
+          challenging to horizontally scale.
+          After vertically scaling, our error message disappeared.
+        <figure>
+          <img src="assets/images/challenges/45_aws_cpu_spike.png" class="case-study-image">
+          <figcaption>Spike in CPU utlization on AWS monitoring dashboard.<figcaption>
+        </figure>
+        <br />
+        <p>
+          This also led to our decision to include a CPU usage section in Tapestry’s dashboard to monitor
+          the AWS resources.
+        </p>
+        <br />
         <h3>6.2 Storage Phase Challenge</h3>
-        <br/>
+        <br />
         <p>
-          One interesting challenge we encountered when working with Snowflake was how to run SQL commands for a new user once you have their credentials. We needed to run a sequence of 34 commands in order to set up the warehouse with the necessary databases, schema, roles, and permissions for the Tapestry pipeline to operate.
+          One interesting challenge we encountered when working with Snowflake was how to run SQL commands for a new
+          user once you have their credentials. We needed to run a sequence of 34 commands in order to set up the
+          warehouse with the necessary databases, schema, roles, and permissions for the Tapestry pipeline to operate.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/challenges/scrollingSQLscript.gif">
         </figure>
         <p>
-          We found that Snowflake provides a Node.js SDK, which would allow us to communicate with the Snowflake warehouse. Since the SDK only allows one SQL statement to be executed at a time, we needed to store each statement as an array element, and then iterate through each one individually. 
+          We found that Snowflake provides a Node.js SDK, which would allow us to communicate with the Snowflake
+          warehouse. Since the SDK only allows one SQL statement to be executed at a time, we needed to store each
+          statement as an array element, and then iterate through each one individually.
         </p>
         <figure>
           <img src="assets/images/challenges/50_snowflake_sdk_v2.png">
         </figure>
-        <br/>
+        <br />
         <p>
-          Now that we could execute each SQL statement individually, we ran into another problem because the SDK is callback-based and runs code asynchronously.
+          Now that we could execute each SQL statement individually, we ran into another problem because the SDK is
+          callback-based and runs code asynchronously.
         </p>
-        <br/>
+        <br />
         <p>
-          To visualize this problem, we added a log statement with the array index, and you can see how the statements are being executed out of order  The error logs indicated that Snowflake was attempting to create databases and tables before the permission and role statements had finished executing. 
+          To visualize this problem, we added a log statement with the array index, and you can see how the statements
+          are being executed out of order The error logs indicated that Snowflake was attempting to create databases and
+          tables before the permission and role statements had finished executing.
         </p>
-        <br/>
+        <br />
         <p>
-          One option for solving this might be to nest each callback so that the statements are executed in the right order. However, this would result in unreadable code that would be hard to manage. 
+          One option for solving this might be to nest each callback so that the statements are executed in the right
+          order. However, this would result in unreadable code that would be hard to manage.
         </p>
-        <br/>
+        <br />
         <p>
-          Instead, we opted to use the snowflake-promise library. This is a wrapper for the Snowflake SDK that provides a promised-based API.
+          Instead, we opted to use the snowflake-promise library. This is a wrapper for the Snowflake SDK that provides
+          a promised-based API.
         </p>
-        <br/>
+        <br />
         <p>
-          This made it possible to use async/await to handle multiple promises in a synchronous fashion. Now, as you can see, the logs indicate the statements executed in the right order. 
+          This made it possible to use async/await to handle multiple promises in a synchronous fashion. Now, as you can
+          see, the logs indicate the statements executed in the right order.
         </p>
-        <br/>
+        <br />
         <h3>6.3 Syncing Phase Challenge</h3>
-        <br/>
+        <br />
         <p>
-          One particularly interesting challenge when deploying Grouparoo was determining how to inject sensitive user inputs, like API keys or passwords, into the Docker container for Grouparoo’s web application. For Grouparoo, we needed to reference these inputs in configuration files as environmental variables.
+          One particularly interesting challenge when deploying Grouparoo was determining how to inject sensitive user
+          inputs, like API keys or passwords, into the Docker container for Grouparoo’s web application. For Grouparoo,
+          we needed to reference these inputs in configuration files as environmental variables.
         </p>
-        <br/>
+        <br />
         <figure>
           <img src="assets/images/challenges/60_injectsecrets.png">
         </figure>
         <p>
-          We soon learned that you can pass environmental variables to a container by referencing a local .env file in a Docker Compose yaml file. This solved part of the problem; the Docker container could now access any variables we provided in this file.           However, because we were not receiving the user inputs until runtime, this .env file had to be dynamically generated after these inputs were received via the CLI, but before the container could run on ECS. 
+          We soon learned that you can pass environmental variables to a container by referencing a local .env file in a
+          Docker Compose yaml file. This solved part of the problem; the Docker container could now access any variables
+          we provided in this file. However, because we were not receiving the user inputs until runtime, this .env file
+          had to be dynamically generated after these inputs were received via the CLI, but before the container could
+          run on ECS.
         </p>
-        <br/>
+        <br />
         <p>
-          Our solution for doing this was two-fold. First, we stored the user inputs in the SSM Parameter Store on AWS. This ensured that this sensitive information was secure and encrypted, but also available for us to access from the AWS CLI as needed. Then, we created a function to dynamically write the .env file in the user’s project folder after we had all of their inputs.
+          Our solution for doing this was two-fold. First, we stored the user inputs in the SSM Parameter Store on AWS.
+          This ensured that this sensitive information was secure and encrypted, but also available for us to access
+          from the AWS CLI as needed. Then, we created a function to dynamically write the .env file in the user’s
+          project folder after we had all of their inputs.
         </p>
-        <br/>
+        <br />
         <!--Section 7-->
         <h2>7 Future Work</h2>
-        <br/>
+        <br />
         <p>
           There are still a few features we would like to add to Tapestry in the future.
         </p>
         <ul>
-          <li>One thing, we’d love to do is enable cross-platform support, such as deployment on Google Cloud Platform.</li>
-          <li>We’d also like to deploy Airbyte with ECS, so that our user has greater flexibility in terms of scaling. Airbyte has indicated that this compatibility will be available sometime in the future.</li>
-          <li>Additionally, we would like to add more built-in templates to the kickstart command, so that Tapestry can be used out-of-the-box for more use cases.</li>
-          <li>And lastly, we’d like to add more advanced metrics for pipeline monitoring, such as Cloudwatch alarms that can send notifications when particular utilization thresholds are reached.</li>
+          <li>One thing, we’d love to do is enable cross-platform support, such as deployment on Google Cloud Platform.
+          </li>
+          <li>We’d also like to deploy Airbyte with ECS, so that our user has greater flexibility in terms of scaling.
+            Airbyte has indicated that this compatibility will be available sometime in the future.</li>
+          <li>Additionally, we would like to add more built-in templates to the kickstart command, so that Tapestry can
+            be used out-of-the-box for more use cases.</li>
+          <li>And lastly, we’d like to add more advanced metrics for pipeline monitoring, such as Cloudwatch alarms that
+            can send notifications when particular utilization thresholds are reached.</li>
         </ul>
-          <!-- Section 8 -->
+        <!-- Section 8 -->
         <h2>8 References</h2>
         <!-- Section 8 -->
         <h2>9 Team</h2>
         <br>
         <br>
-        
+
         <div class="section team-section">
           <div class="container">
             <div data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
-              <div data-w-id="8ce4324a-ed8e-4436-9964-0cfbaf67c64a" style="transform: translate3d(0px, 55px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;" class="tabs-content w-tab-content">
+              <div data-w-id="8ce4324a-ed8e-4436-9964-0cfbaf67c64a"
+                style="transform: translate3d(0px, 55px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;"
+                class="tabs-content w-tab-content">
                 <div>
                   <div class="team-grid">
                     <div class="team-member-wrap">
@@ -981,24 +1255,24 @@ Data modeling and business intelligence or analytics tools built on top of the w
                         <li>
                           <a href="mailto:katherine.murphy.beck@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://katherinebeck.me" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/katherine-murphy-beck-3849539/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                     <div class="team-member-wrap">
@@ -1011,24 +1285,24 @@ Data modeling and business intelligence or analytics tools built on top of the w
                         <li>
                           <a href="mailto:lgarrison1023@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://leahgarrison.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/leahgarrison/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                     <div class="team-member-wrap">
@@ -1041,24 +1315,24 @@ Data modeling and business intelligence or analytics tools built on top of the w
                         <li>
                           <a href="mailto:ramole507@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/rick-mole-8b756139/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                     <div class="team-member-wrap">
@@ -1071,24 +1345,24 @@ Data modeling and business intelligence or analytics tools built on top of the w
                         <li>
                           <a href="mailto:adamp113@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/adam-peterson-211a1041/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                   </div>
