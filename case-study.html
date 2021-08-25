@@ -37,7 +37,7 @@
           </a>
           <nav role="navigation" class="nav-menu w-nav-menu">
             <a href="/case-study" class="link-block w-inline-block">
-              <div >Case Study</div>
+              <div>Case Study</div>
             </a>
             <a href="/team" class="link-block w-inline-block">
               <div>The Team</div>
@@ -94,11 +94,14 @@
           Tapestry is an open-source orchestration framework for the deployment of user entity data pipelines.
         </p>
         <figure>
-        <div data-w-id="c8b52af7-58af-18c7-65ce-aa2950b6601f" class="hero-images-container case-study-image"><img src="assets/images/demo/30_kickstart_full.gif" alt="" class="hero-image-left" style="will-change: transform; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><img src="assets/images/demo/tap_ui_grouparoo_v2.png" alt="" class="hero-image-right">
-        </div>
-         <figcaption>Tapestry CLI and Dashboard</figcaption>
+          <div data-w-id="c8b52af7-58af-18c7-65ce-aa2950b6601f" class="hero-images-container case-study-image"><img
+              src="assets/images/demo/30_kickstart_full.gif" alt="" class="hero-image-left"
+              style="will-change: transform; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><img
+              src="assets/images/demo/tap_ui_grouparoo_v2.png" alt="" class="hero-image-right">
+          </div>
+          <figcaption>Tapestry CLI and Dashboard</figcaption>
         </figure>
-      </br>
+        </br>
         <p>
           Tapestry allows developers to easily configure and launch an end-to-end data pipeline hosted on Amazon Web
           Services. With Tapestry, your user data pipeline will be automatically deployed and ready to ingest data from
@@ -253,21 +256,22 @@
         <p>
           There are several challenges of this type of data integration. User data stored in SaaS applications is
           similar in structure to the data we see in traditional relational databases. However, unlike relational
-          databases, data in SaaS applications cannot be accessed with a simple query. 
+          databases, data in SaaS applications cannot be accessed with a simple query.
         </p>
         <figure>
           <img src="assets/images/introduction/data_query.png" alt="" class="case-study-image">
           <figcaption>User data acccessed via simple query to production database.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          Instead, this data must be retrieved via unique REST APIs, making it difficult to determine how to communicate with each tool.
+          Instead, this data must be retrieved via unique REST APIs, making it difficult to determine how to communicate
+          with each tool.
         </p>
         <figure>
           <img src="assets/images/introduction/data_api_horizontal.png" alt="" class="case-study-image">
           <figcaption>User data acccessed via call to REST API.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
           Furthermore, factors such as limited documentation, rate limits on API requests, managing potential network
           errors, and ever-changing API schemas can make transporting large amounts of data a challenging and slow
@@ -566,8 +570,8 @@
         <br />
         <figure>
           <img src="assets/images/architecture/43_dataingestion_dockerconnectors_v2.png">
-        <br />
-        <br />
+          <br />
+          <br />
           <figcaption>Airbyte runs as a Docker container and creates additional connectors as containers.</figcaption>
         </figure>
         <br />
@@ -578,8 +582,8 @@
         </p>
         <figure>
           <img src="assets/images/architecture/43_dataingestion_EC2_ALB_purple_v4.png">
-          <br/>
-          <br/>
+          <br />
+          <br />
           <figcaption>Airbyte data ingestion tool, deployed on an EC2 Instance with an Application Load Balancer.
           </figcaption>
         </figure>
@@ -1148,7 +1152,8 @@
           After further investigation, we found that the EC2 instance had alarmingly high CPU usage. Our solution was to
           vertically scale this EC2 instance to increase its computing power. As we discussed
           in our architecture section, we were limited to deploying Airbye on a single EC2 instance, making it
-          virtually impossible to horizontally scale. Once we increased the size of the server, our error message disappeared.
+          virtually impossible to horizontally scale. Once we increased the size of the server, our error message
+          disappeared.
         <figure>
           <img src="assets/images/challenges/45_aws_cpu_spike.png" class="case-study-image">
           <figcaption>Spike in CPU utlization on AWS monitoring dashboard.</figcaption>
@@ -1162,19 +1167,21 @@
         <h4>Caching an API Response</h4>
         <p>
           Another issue that we ran into while working on the ingestion phase was an unreliable Salesforce API endpoint.
-          In order to properly format the request body to connect Salesforce to our warehouse, we needed to make an Airbyte API call to get the schema from Salesforce. 
-          After getting the schema, another API call was required to extract the data. Airbyte handled this for us by making additional API calls.
+          In order to properly format the request body to connect Salesforce to our warehouse, we needed to make an
+          Airbyte API call to get the schema from Salesforce.
+          After getting the schema, another API call was required to extract the data. Airbyte handled this for us by
+          making additional API calls.
         </p>
         <figure>
           <img src="assets/images/challenges/salesforceAPI_1.png" class="case-study-image">
           <figcaption>Expected behavior when Airbyte sets up a Salesforce connection.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
           However, the call to get the schema only received a response occasionally.
           Upon further research, we found that this was a common problem encountered by developers using Salesforce.
         </p>
-        <br/>
+        <br />
         <p>We couldn’t accept such an inconsistent response rate, so we considered two options:</p>
         <ul>
           <li>Implementing API retry logic</li>
@@ -1186,14 +1193,18 @@
         </figure>
         <br />
         <p>
-          Airbyte already has built-in retry logic that attempts the API call three times. In addition, we made multiple requests manually.
-          This resulted in us hitting Salesforce’s rate limit and being throttled for a 24-hour period. 
-          At that point, we could have tried exponentially backing off, but even doing that would have made the user experience unacceptable.
-          It would be an inconsistent experience, and would also potentially take hours to ingest data, even when successful.
+          Airbyte already has built-in retry logic that attempts the API call three times. In addition, we made multiple
+          requests manually.
+          This resulted in us hitting Salesforce’s rate limit and being throttled for a 24-hour period.
+          At that point, we could have tried exponentially backing off, but even doing that would have made the user
+          experience unacceptable.
+          It would be an inconsistent experience, and would also potentially take hours to ingest data, even when
+          successful.
         </p>
-        <br/>
+        <br />
         <p>
-          So we turned to our next option, caching. We decided to store the schema that we received from the next successful response in a file.
+          So we turned to our next option, caching. We decided to store the schema that we received from the next
+          successful response in a file.
           We could then reference that file for future API calls. This improved the process dramatically.
         </p>
         <figure>
@@ -1202,12 +1213,15 @@
         </figure>
         <br />
         <p>
-          It's worth noting that this is not a permanent solution and comes with some drawbacks. If Salesforce ever makes
-          a change to their schema, then our caching solution will break down. We would then need to capture the new schema and replace the
-          old file with the new one. To us, though, this solution was worth the tradeoff of additional maintenance, and so far Salesforce has
+          It's worth noting that this is not a permanent solution and comes with some drawbacks. If Salesforce ever
+          makes
+          a change to their schema, then our caching solution will break down. We would then need to capture the new
+          schema and replace the
+          old file with the new one. To us, though, this solution was worth the tradeoff of additional maintenance, and
+          so far Salesforce has
           not made any changes to their schema.
         </p>
-        <br/>
+        <br />
 
         <h3>6.2 Storage Phase Challenge</h3>
         <br />
@@ -1224,7 +1238,7 @@
           <p></p>
           <figcaption>Example SQL statements required for warehouse setup.</figcaption>
         </figure>
-        <br/>
+        <br />
         <h4>Node.js SDK for Snowflake</h4>
         <p>
           We found that Snowflake provides a Node.js SDK, which would allow us to communicate with the Snowflake
@@ -1238,7 +1252,8 @@
         <br />
         <p>
           To visualize this problem, we added a log statement with the array index, and you can see how the statements
-          are being executed out of order. The error logs indicated that Snowflake was attempting to create databases and
+          are being executed out of order. The error logs indicated that Snowflake was attempting to create databases
+          and
           tables before the permission and role statements had finished executing.
         </p>
         <figure>
@@ -1258,7 +1273,7 @@
         </p>
         <br />
         <p>
-          This made it possible to use async/await to handle multiple promises in a synchronous fashion, and the logs 
+          This made it possible to use async/await to handle multiple promises in a synchronous fashion, and the logs
           indicate that the statements are being executed in the right order.
         </p>
         <figure>
@@ -1279,16 +1294,18 @@
           <img src="assets/images/challenges/secrets_1.png">
           <figcaption>Challenge of injecting sensitive user inputs into the Docker container.</figcaption>
         </figure>
-        <br/>
+        <br />
         <p>
-          We soon learned that you can pass environmental variables to a container by referencing a local .env file within a
+          We soon learned that you can pass environmental variables to a container by referencing a local .env file
+          within a
           Docker Compose YAML file. This solved part of the problem. The Docker container could now access any variables
           we provided in this file. However, since we do not receive user inputs until runtime, this .env file
           had to be dynamically generated during execution, but before running the container on ECS.
         </p>
         <figure>
           <img src="assets/images/challenges/secrets_2.png">
-          <figcaption>Using a .env file referenced by the Docker Compose YAML file to inject secrets at runtime.</figcaption>
+          <figcaption>Using a .env file referenced by the Docker Compose YAML file to inject secrets at runtime.
+          </figcaption>
         </figure>
         <br />
         <p>
@@ -1318,40 +1335,48 @@
           <li>Incorporate more advanced metrics for pipeline monitoring, such as Cloudwatch alarms that
             can send notifications when particular utilization thresholds are reached.</li>
         </ul>
-      </br>
+        </br>
         <!-- Section 8 -->
         <h2>8 References</h2>
 
-            <p><strong>Modern Data Pipeline:</strong></p>
-              <ul>
-                <li><a href="https://hevodata.com/blog/cloud-data-warehouse-101/" class="references">History of the Cloud Data Warehouse</a></li>
-                <li><a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/" class="references">Emerging Architectures for Modern Data Infrastructure</a></li>
-                <li><a href="https://rudderstack.com/blog/the-complete-customer-data-stack" class="references">The Complete Customer Data Stack</a></li>
-                <li><a href="https://dataled.academy/guides/modern-data-stack-for-growth/" class="references">Modern Data Stack for Growth</a></li>
-              </ul>
-            <p><strong>Data Silos:</strong></p>
-              <ul>
-                <li><a href="https://rudderstack.com/blog/heres-why-the-cloud-tools-used-by-marketing-sales-and-product-create-data-silos" class="references">Why Cloud Tools Create Data Silos</a></li>
-              </ul>
-            <p><strong>Reverse ETL/Syncing:</strong></p>
-              <ul>
-                <li><a href="https://medium.com/memory-leak/reverse-etl-a-primer-4e6694dcc7fb" class="references">Reverse ETL, A Primer</a></li>
-                <li><a href="https://www.grouparoo.com/solutions/reverse-etl" class="references">Reverse ETL</a></li>
-                <li><a href="https://hightouch.io/customers/zeplin/" class="references">Reverse ETL Case Study</a></li>
-              </ul>
-           <p><strong>Companies:</strong></p>
-              <ul>
-                <li><a href="https://airbyte.io/" class="references">Airbyte</a></li>
-                <li><a href="https://www.grouparoo.com/" class="references">Grouparoo</a></li>
-                <li><a href="https://www.snowflake.com/" class="references">Snowflake</a></li>
-                <li> <a href="https://www.getdbt.com/" class="references">DBT</a></li>
-                <li><a href="https://rudderstack.com/" class="references">Rudderstack</a></li>
-              </ul>
+        <p><strong>Modern Data Pipeline:</strong></p>
+        <ul>
+          <li><a href="https://hevodata.com/blog/cloud-data-warehouse-101/" class="references">History of the Cloud Data
+              Warehouse</a></li>
+          <li><a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/"
+              class="references">Emerging Architectures for Modern Data Infrastructure</a></li>
+          <li><a href="https://rudderstack.com/blog/the-complete-customer-data-stack" class="references">The Complete
+              Customer Data Stack</a></li>
+          <li><a href="https://dataled.academy/guides/modern-data-stack-for-growth/" class="references">Modern Data
+              Stack for Growth</a></li>
+        </ul>
+        <p><strong>Data Silos:</strong></p>
+        <ul>
+          <li><a
+              href="https://rudderstack.com/blog/heres-why-the-cloud-tools-used-by-marketing-sales-and-product-create-data-silos"
+              class="references">Why Cloud Tools Create Data Silos</a></li>
+        </ul>
+        <p><strong>Reverse ETL/Syncing:</strong></p>
+        <ul>
+          <li><a href="https://medium.com/memory-leak/reverse-etl-a-primer-4e6694dcc7fb" class="references">Reverse ETL,
+              A Primer</a></li>
+          <li><a href="https://www.grouparoo.com/solutions/reverse-etl" class="references">Reverse ETL</a></li>
+          <li><a href="https://hightouch.io/customers/zeplin/" class="references">Reverse ETL Case Study</a></li>
+        </ul>
+        <p><strong>Companies:</strong></p>
+        <ul>
+          <li><a href="https://airbyte.io/" class="references">Airbyte</a></li>
+          <li><a href="https://www.grouparoo.com/" class="references">Grouparoo</a></li>
+          <li><a href="https://www.snowflake.com/" class="references">Snowflake</a></li>
+          <li> <a href="https://www.getdbt.com/" class="references">DBT</a></li>
+          <li><a href="https://rudderstack.com/" class="references">Rudderstack</a></li>
+        </ul>
         <br>
         <h2>Presentation</h2>
         <div class="presentation-wrapper case-study-image">
-          
-          <iframe class="presentation-video" frameborder="0" src="https://www.youtube.com/embed/nQdf8djNlFA" allowfullscreen></iframe>
+
+          <iframe class="presentation-video" frameborder="0" src="https://www.youtube.com/embed/nQdf8djNlFA"
+            allowfullscreen></iframe>
         </div class="presentation-wrapper">
         <br>
         <h2>Team</h2>
@@ -1359,7 +1384,9 @@
         <div class="section team-section">
           <div class="container">
             <div data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
-              <div data-w-id="8ce4324a-ed8e-4436-9964-0cfbaf67c64a" style="transform: translate3d(0px, 55px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;" class="tabs-content w-tab-content">
+              <div data-w-id="8ce4324a-ed8e-4436-9964-0cfbaf67c64a"
+                style="transform: translate3d(0px, 55px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 0;"
+                class="tabs-content w-tab-content">
                 <div>
                   <div class="team-grid">
                     <div class="team-member-wrap">
@@ -1372,24 +1399,24 @@
                         <li>
                           <a href="mailto:katherine.murphy.beck@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://katherinebeck.me" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/katherine-murphy-beck/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                     <div class="team-member-wrap">
@@ -1402,24 +1429,24 @@
                         <li>
                           <a href="mailto:lgarrison1023@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://leahgarrison.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/leahgarrison/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                     <div class="team-member-wrap">
@@ -1432,24 +1459,24 @@
                         <li>
                           <a href="mailto:ramole507@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://rickmole.dev" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/rick-mole/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                     <div class="team-member-wrap">
@@ -1462,24 +1489,24 @@
                         <li>
                           <a href="mailto:adamp113@gmail.com" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-envelope"></i>
+                              <i class="fas fa-envelope"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fas fa-globe"></i>
+                              <i class="fas fa-globe"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                         <li>
                           <a href="https://www.linkedin.com/in/adam-peterson-211a1041/" target="_blank">
                             <span class="team-member-icon">
-                            <i class="fab fa-linkedin"></i>
+                              <i class="fab fa-linkedin"></i>
                             </span>
                           </a>
-                         </li>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -1490,36 +1517,35 @@
         </div>
         <br>
         <br>
-    </article>      
-     </div>
-    </div>
-    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f71dd169010d641cf65485c"
-      type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"></script>
-    <script src="https://assets.website-files.com/5f71dd169010d641cf65485c/js/webflow.6af2032ff.js"
-      type="text/javascript"></script>
-    <script>
-      /*!
-       * toc - jQuery Table of Contents Plugin
-       * v0.3.2
-       * http://projects.jga.me/toc/
-       * copyright Greg Allen 2014
-       * MIT License
-      */
-      !function (a) { a.fn.smoothScroller = function (b) { b = a.extend({}, a.fn.smoothScroller.defaults, b); var c = a(this); return a(b.scrollEl).animate({ scrollTop: c.offset().top - a(b.scrollEl).offset().top - b.offset }, b.speed, b.ease, function () { var a = c.attr("id"); a.length && (history.pushState ? history.pushState(null, null, "#" + a) : document.location.hash = a), c.trigger("smoothScrollerComplete") }), this }, a.fn.smoothScroller.defaults = { speed: 400, ease: "swing", scrollEl: "body,html", offset: 0 }, a("body").on("click", "[data-smoothscroller]", function (b) { b.preventDefault(); var c = a(this).attr("href"); 0 === c.indexOf("#") && a(c).smoothScroller() }) }(jQuery), function (a) { var b = {}; a.fn.toc = function (b) { var c, d = this, e = a.extend({}, jQuery.fn.toc.defaults, b), f = a(e.container), g = a(e.selectors, f), h = [], i = e.activeClass, j = function (b, c) { if (e.smoothScrolling && "function" == typeof e.smoothScrolling) { b.preventDefault(); var f = a(b.target).attr("href"); e.smoothScrolling(f, e, c) } a("li", d).removeClass(i), a(b.target).parent().addClass(i) }, k = function () { c && clearTimeout(c), c = setTimeout(function () { for (var b, c = a(window).scrollTop(), f = Number.MAX_VALUE, g = 0, j = 0, k = h.length; k > j; j++) { var l = Math.abs(h[j] - c); f > l && (g = j, f = l) } a("li", d).removeClass(i), b = a("li:eq(" + g + ")", d).addClass(i), e.onHighlight(b) }, 50) }; return e.highlightOnScroll && (a(window).bind("scroll", k), k()), this.each(function () { var b = a(this), c = a(e.listType); g.each(function (d, f) { var g = a(f); h.push(g.offset().top - e.highlightOffset); var i = e.anchorName(d, f, e.prefix); if (f.id !== i) { a("<span/>").attr("id", i).insertBefore(g) } var l = a("<a/>").text(e.headerText(d, f, g)).attr("href", "#" + i).bind("click", function (c) { a(window).unbind("scroll", k), j(c, function () { a(window).bind("scroll", k) }), b.trigger("selected", a(this).attr("href")) }), m = a("<li/>").addClass(e.itemClass(d, f, g, e.prefix)).append(l); c.append(m) }), b.html(c) }) }, jQuery.fn.toc.defaults = { container: "body", listType: "<ul/>", selectors: "h1,h2,h3", smoothScrolling: function (b, c, d) { a(b).smoothScroller({ offset: c.scrollToOffset }).on("smoothScrollerComplete", function () { d() }) }, scrollToOffset: 0, prefix: "toc", activeClass: "toc-active", onHighlight: function () { }, highlightOnScroll: !0, highlightOffset: 100, anchorName: function (c, d, e) { if (d.id.length) return d.id; var f = a(d).text().replace(/[^a-z0-9]/gi, " ").replace(/\s+/g, "-").toLowerCase(); if (b[f]) { for (var g = 2; b[f + g];)g++; f = f + "-" + g } return b[f] = !0, e + "-" + f }, headerText: function (a, b, c) { return c.text() }, itemClass: function (a, b, c, d) { return d + "-" + c[0].tagName.toLowerCase() } } }(jQuery);
-    </script>
-    <script>
-      /* initialize */
-      $('.toc').toc({
-        'selectors': 'h2, h3', //elements to use as headings
-        'container': 'article', //element to find all selectors in
-        'smoothScrolling': true, //enable or disable smooth scrolling on click
-        'prefix': 'toc', //prefix for anchor tags and class names
-        'highlightOnScroll': true, //add class to heading that is currently in focus
-        'highlightOffset': 100, //offset to trigger the next headline
-      });
-    </script>
+    </article>
+  </div>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5f71dd169010d641cf65485c"
+    type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+  <script src="https://assets.website-files.com/5f71dd169010d641cf65485c/js/webflow.6af2032ff.js"
+    type="text/javascript"></script>
+  <script>
+    /*!
+     * toc - jQuery Table of Contents Plugin
+     * v0.3.2
+     * http://projects.jga.me/toc/
+     * copyright Greg Allen 2014
+     * MIT License
+    */
+    !function (a) { a.fn.smoothScroller = function (b) { b = a.extend({}, a.fn.smoothScroller.defaults, b); var c = a(this); return a(b.scrollEl).animate({ scrollTop: c.offset().top - a(b.scrollEl).offset().top - b.offset }, b.speed, b.ease, function () { var a = c.attr("id"); a.length && (history.pushState ? history.pushState(null, null, "#" + a) : document.location.hash = a), c.trigger("smoothScrollerComplete") }), this }, a.fn.smoothScroller.defaults = { speed: 400, ease: "swing", scrollEl: "body,html", offset: 0 }, a("body").on("click", "[data-smoothscroller]", function (b) { b.preventDefault(); var c = a(this).attr("href"); 0 === c.indexOf("#") && a(c).smoothScroller() }) }(jQuery), function (a) { var b = {}; a.fn.toc = function (b) { var c, d = this, e = a.extend({}, jQuery.fn.toc.defaults, b), f = a(e.container), g = a(e.selectors, f), h = [], i = e.activeClass, j = function (b, c) { if (e.smoothScrolling && "function" == typeof e.smoothScrolling) { b.preventDefault(); var f = a(b.target).attr("href"); e.smoothScrolling(f, e, c) } a("li", d).removeClass(i), a(b.target).parent().addClass(i) }, k = function () { c && clearTimeout(c), c = setTimeout(function () { for (var b, c = a(window).scrollTop(), f = Number.MAX_VALUE, g = 0, j = 0, k = h.length; k > j; j++) { var l = Math.abs(h[j] - c); f > l && (g = j, f = l) } a("li", d).removeClass(i), b = a("li:eq(" + g + ")", d).addClass(i), e.onHighlight(b) }, 50) }; return e.highlightOnScroll && (a(window).bind("scroll", k), k()), this.each(function () { var b = a(this), c = a(e.listType); g.each(function (d, f) { var g = a(f); h.push(g.offset().top - e.highlightOffset); var i = e.anchorName(d, f, e.prefix); if (f.id !== i) { a("<span/>").attr("id", i).insertBefore(g) } var l = a("<a/>").text(e.headerText(d, f, g)).attr("href", "#" + i).bind("click", function (c) { a(window).unbind("scroll", k), j(c, function () { a(window).bind("scroll", k) }), b.trigger("selected", a(this).attr("href")) }), m = a("<li/>").addClass(e.itemClass(d, f, g, e.prefix)).append(l); c.append(m) }), b.html(c) }) }, jQuery.fn.toc.defaults = { container: "body", listType: "<ul/>", selectors: "h1,h2,h3", smoothScrolling: function (b, c, d) { a(b).smoothScroller({ offset: c.scrollToOffset }).on("smoothScrollerComplete", function () { d() }) }, scrollToOffset: 0, prefix: "toc", activeClass: "toc-active", onHighlight: function () { }, highlightOnScroll: !0, highlightOffset: 100, anchorName: function (c, d, e) { if (d.id.length) return d.id; var f = a(d).text().replace(/[^a-z0-9]/gi, " ").replace(/\s+/g, "-").toLowerCase(); if (b[f]) { for (var g = 2; b[f + g];)g++; f = f + "-" + g } return b[f] = !0, e + "-" + f }, headerText: function (a, b, c) { return c.text() }, itemClass: function (a, b, c, d) { return d + "-" + c[0].tagName.toLowerCase() } } }(jQuery);
+  </script>
+  <script>
+    /* initialize */
+    $('.toc').toc({
+      'selectors': 'h2', //elements to use as headings
+      'container': 'article', //element to find all selectors in
+      'smoothScrolling': true, //enable or disable smooth scrolling on click
+      'prefix': 'toc', //prefix for anchor tags and class names
+      'highlightOnScroll': true, //add class to heading that is currently in focus
+      'highlightOffset': 100, //offset to trigger the next headline
+    });
+  </script>
 </body>
 
 </html>
-
