@@ -1375,6 +1375,8 @@ a:hover {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  /* background-color: var(--white);
+  position: fixed; */
 }
 
 .brand {
@@ -1396,6 +1398,7 @@ a:hover {
   -ms-flex-align: center;
   align-items: center;
   font-size: 24px;
+  /* position: fixed; */
 }
 
 .login-buttons {
@@ -1423,10 +1426,12 @@ a:hover {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  /* background-color: var(--white);
+  position: fixed; */
 }
 
 .nav-menu {
-  position: static;
+  /* position: fixed; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1459,7 +1464,7 @@ a:hover {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: transparent;
+  background-color: var(--white);
 }
 
 .nav-content-wrap {
