@@ -6,4 +6,4 @@ const _changeText = () => {
   document.getElementById("spin").innerHTML = words[i];
 }
 
-setInterval("_changeText()", 800);
+setInterval("_changeText()", 1000);

@@ -316,7 +316,7 @@ label {
 
 .command {
   background-color: #29abe2;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .large-image {
@@ -348,6 +348,9 @@ label {
   .case-study-image {
     width: 80%;
     margin: 0px auto;
+  }
+
+  .hero-image-left {
   }
 }
 
@@ -1664,6 +1667,13 @@ a:hover {
     grid-template-rows: auto auto;
   }
 
+  #left-image-scroll {
+    will-change: transform;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+  }
+
   .template-logo {
     max-width: 50px;
   }
@@ -2004,4 +2014,20 @@ iframe {
   width: 90%;
   margin: 10vh auto;
   margin-bottom: 20%;
+}
+
+.data-silo-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2px;
+}
+
+.data-silo-button-left {
+  margin: 20px;
+  text-align: center;
+}
+
+.data-silo-button-right {
+  margin: 20px;
 }
