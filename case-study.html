@@ -946,7 +946,7 @@
           to route network traffic to your cluster.
         </p>
         <figure>
-          <img src="assets/images/demo/kickstart_grouparoo_v3.gif">
+          <img src="assets/images/demo/kickstart-grouparoo_v3.gif">
           <figcaption>Setup and provisioning of data syncing stack from the command line.</figcaption>
         </figure>
         <br />
@@ -1195,6 +1195,8 @@
 
         <h3>6.2 Storage Phase Challenge</h3>
         <br />
+        <h4>Automating Warehouse Setup</h4>
+        <br />
         <p>
           One interesting challenge we encountered when working with Snowflake was how to run SQL statements for a new
           user once they input their credentials. We needed to run a sequence of <em>34 commands</em> to set up the
@@ -1203,8 +1205,10 @@
         <br />
         <figure>
           <img src="assets/images/challenges/Example_SQL_Commands.png">
+          <p></p>
           <figcaption>Example SQL statements required for warehouse setup.</figcaption>
         </figure>
+        <br/>
         <h4>Node.js SDK for Snowflake</h4>
         <p>
           We found that Snowflake provides a Node.js SDK, which would allow us to communicate with the Snowflake
@@ -1248,6 +1252,7 @@
         <br />
         <h3>6.3 Syncing Phase Challenge</h3>
         <br />
+        <h4>Injecting Secrets at Runtime</h4>
         <p>
           One particularly interesting challenge when deploying Grouparoo was determining how to inject sensitive user
           inputs, like API keys or passwords, into the Docker container for Grouparoo’s web application. For Grouparoo,
