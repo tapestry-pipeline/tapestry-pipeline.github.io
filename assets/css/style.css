@@ -1998,7 +1998,7 @@ iframe {
   box-shadow: 0 0 40px #000;
 }
 
-*/ .data-silo-buttons {
+ .data-silo-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
