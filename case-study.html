@@ -1167,56 +1167,91 @@
         <br />
         <h4>Caching an API Response</h4>
         <p>
-          Another issue that we ran into while working on the ingestion phase was an unreliable Salesforce API endpoint.
-          In order to properly format the request body to connect Salesforce to our warehouse, we needed to make an
-          Airbyte API call to get the schema from Salesforce.
-          After getting the schema, another API call was required to extract the data. Airbyte handled this for us by
-          making additional API calls.
+          While we were implementing the automation of connecting Salesforce to the data warehouse, we were getting inconsistent
+          responses from API calls. When deploying each user's pipeline using the <code class="command">kickstart</code> command,
+          Tapestry attempts to set up a connection between Salesforce and the user's warehouse through Airbyte. Ideally, the process is as follows:
+        </p>    
+          <figure>
+            <img src="assets/images/challenges/new_salesforceAPI_1.png" class="case-study-image">
+            <figcaption>Ideal setup via Airbyte API and data transfer.</figcaption>
+          </figure>
+          <br /> 
+          <ol>
+            <li>Tapestry makes an API call to Airbyte to retrieve the appropriate schema for Salesforce contacts.</li>
+            <li>Airbyte makes an API call to Salesforce to get the contacts schema and send that schema back to Tapestry.</li>
+            <li>Tapestry makes another API call to Airbyte to set up a connection between Salesforce and the data warehouse (Snowflake).</li>
+          </ol>
+          
+          <p>
+          The above process occurs once during deployment. If completed successfully, Airbyte makes API calls to Salesforce on the user's
+          behalf to ingest data on a schedule.
+           
+          However, Airbyte did not always receive a successful response from Salesforce when requesting the schema.
+          This, in turn, broke the rest of the process, and Tapestry was not able to establish the connection needed to begin
+          transferring data.
         </p>
-        <figure>
-          <img src="assets/images/challenges/salesforceAPI_1.png" class="case-study-image">
-          <figcaption>Expected behavior when Airbyte sets up a Salesforce connection.</figcaption>
-        </figure>
-        <br />
-        <p>
-          However, the call to get the schema only received a response occasionally.
-          Upon further research, we found that this was a common problem encountered by developers using Salesforce.
+          <figure>
+            <img src="assets/images/challenges/new_salesforceAPI_2.png" class="case-study-image">
+            <figcaption>Error requesting Salesforce schema and subsequently cannot make API calls that follow.</figcaption>
+          </figure>
+          <br /> 
+          <p>
+            Upon further research, we found that Salesforce had an unreliable API endpoint, and that this was a common problem encountered by
+            developers using Salesforce.
+          </p>
+          <br />
+          <p>We couldn’t accept such an inconsistent response rate, so we considered two options:</p>
+          <ul>
+            <li>Implementing API retry logic</li>
+            <li>Caching</li>
+          </ul>
+          
+          <p>
+            Airbyte already has built-in retry logic that attempts the API call three times. In addition, we made multiple
+            requests manually.
+            This resulted in us hitting Salesforce’s rate limit and being throttled for a 24-hour period.
+          </p>
+          <br />
+          <p> 
+            At that point, we could have tried exponentially backing off, but doing so would have made the user
+            experience unacceptable.
+            It would be an inconsistent experience, and would also potentially take hours before being able to ingest data.
+          </p>
+          <br />
+          <p>
+            So we turned to our next option, caching. We decided to store the Salesforce contact schema that we received from the next
+            successful response in a file exporting a "contactSchema" object.
+           </p>
+            <figure>
+              <img src="assets/images/challenges/get_source_schema.png" class="case-study-image">
+              <figcaption>Logic using cached schema.</figcaption>
+            </figure>
+            <br />
+            
+          <p>
+            As the above image shows, we can now reference the "contactSchema" object for future API calls. This improved the process dramatically.
+          </p>
+          
+          <figure>
+            <img src="assets/images/challenges/new_salesforceAPI_3.png" class="case-study-image">
+            <figcaption>Tapestry caching solution for obtaining Salesforce schema.</figcaption>
+          </figure>
+          <br /> 
+          <p>
+            With the schema cached, we now only make one API call to establish the connection. 
+          </p>
+          <figure>
+            <img src="assets/images/challenges/new_salesforceAPI_4.png" class="case-study-image">
+            <figcaption>New request/response cycle during deployment with caching.</figcaption>
+          </figure>
+          <br /> 
+           
+          
         </p>
-        <br />
-        <p>We couldn’t accept such an inconsistent response rate, so we considered two options:</p>
-        <ul>
-          <li>Implementing API retry logic</li>
-          <li>Caching</li>
-        </ul>
-        <figure>
-          <img src="assets/images/challenges/salesforceAPI_2.png" class="case-study-image">
-          <figcaption>Unsuccessful retries leading to a server timeout.</figcaption>
-        </figure>
-        <br />
+        
         <p>
-          Airbyte already has built-in retry logic that attempts the API call three times. In addition, we made multiple
-          requests manually.
-          This resulted in us hitting Salesforce’s rate limit and being throttled for a 24-hour period.
-          At that point, we could have tried exponentially backing off, but even doing that would have made the user
-          experience unacceptable.
-          It would be an inconsistent experience, and would also potentially take hours to ingest data, even when
-          successful.
-        </p>
-        <br />
-        <p>
-          So we turned to our next option, caching. We decided to store the schema that we received from the next
-          successful response in a file.
-          We could then reference that file for future API calls. This improved the process dramatically.
-        </p>
-        <figure>
-          <img src="assets/images/challenges/salesforceAPI_3.png" class="case-study-image">
-          <figcaption>Cached schema helps to consistently setup a connection.</figcaption>
-        </figure>
-        <br />
-        <p>
-          It's worth noting that this is not a permanent solution and comes with some drawbacks. If Salesforce ever
-          makes
-          a change to their schema, then our caching solution will break down. We would then need to capture the new
+          While this simplifies the overall deployment process, it's worth noting that this is not a permanent solution and comes with some drawbacks.
+          If Salesforce ever makes a change to their schema, then our caching solution will break down. We would then need to capture the new
           schema and replace the
           old file with the new one. To us, though, this solution was worth the tradeoff of additional maintenance, and
           so far Salesforce has
@@ -1398,21 +1433,21 @@
                       </div>
                       <ul class="team-member-icons">
                         <li>
-                          <a href="mailto:katherine.murphy.beck@gmail.com" target="_blank">
+                          <a href="mailto:hello@katherinebeck.me" target="_blank">
                             <span class="team-member-icon">
                               <i class="fas fa-envelope"></i>
                             </span>
                           </a>
                         </li>
                         <li>
-                          <a href="https://katherinebeck.me" target="_blank">
+                          <a href="http://katherinebeck.me" target="_blank">
                             <span class="team-member-icon">
                               <i class="fas fa-globe"></i>
                             </span>
                           </a>
                         </li>
                         <li>
-                          <a href="https://www.linkedin.com/in/katherine-murphy-beck/" target="_blank">
+                          <a href="https://www.linkedin.com/in/katherine-m-beck/" target="_blank">
                             <span class="team-member-icon">
                               <i class="fab fa-linkedin"></i>
                             </span>
