@@ -128,6 +128,11 @@ figcaption {
   color: #9579fd;
 }
 
+#sidebar li.toc-active a {
+  color: #9579fd;
+  /* font-weight: bold; */
+}
+
 #sidebar ul ul {
   padding-left: 15px;
 }
@@ -2084,7 +2089,8 @@ iframe {
   padding-left: 20px;
 }
 
-.toc .toc-active {
-  color: red;
-}
+/* .toc .toc-active {
+  background: #336699;
+  box-shadow: inset -5px 0px 10px -5px #000;
+} */
 
