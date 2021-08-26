@@ -907,7 +907,8 @@
         <p>
           Prior to execution, you will have to own or create accounts with Zoom, Salesforce, and Mailchimp. <code
             class="command">kickstart</code> then begins by prompting you with a short series of questions about the
-          previously mentioned accounts, as well as Snowflake, Tapestry’s data warehouse of choice.
+          previously mentioned accounts, as well as Snowflake, Tapestry’s data warehouse of choice. Tapestry stores this
+          information in the AWS SSM Parameter store. This keeps sensitive data safe, but also accessible.
         </p>
         <figure>
           <img src="assets/images/demo/29_kickstart_questions_stars.gif">
@@ -1112,7 +1113,7 @@
         <br />
         <p>
           We say “most” AWS resources because we do not destroy your S3 bucket, nor do we destory any parameters in your
-          SSM Parameter Store. Tapestry uses the Parameter Store to store user inputs, such as API keys and various
+          AWS SSM Parameter Store. Tapestry uses the Parameter Store to store user inputs, such as API keys and various
           account credentials. These resources remain intact so that you can retain access to this data even after your
           pipeline has been torn down.
         </p>
